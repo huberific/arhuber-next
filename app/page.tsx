@@ -1,112 +1,265 @@
-import Image from "next/image";
+import Image from 'next/image'
+import { Divider } from '@mui/material'
+import { Paper } from '@mui/material';
+import { List } from '@mui/material'
+import { ListItem } from '@mui/material'
+import { ListItemText } from '@mui/material'
+import './styles.css'
+import { educationList } from './data';
+
+function Intro() {
+  return (
+    <div id='profile-container' className='main-container mb-10 flex flex-row gap-10 justify-center'>
+      <Image
+        className='rounded-lg content-center'
+        src='/ARH_2295_sml.png'
+        width={300}
+        height={300}
+        alt='Picture of Aaron'
+      />
+      <p className='content-center text-lg font-medium'>
+        Hi, I'm Aaron.
+      </p>
+    </div>
+  )
+}
+
+function About() {
+  return (
+    <div id='about' className='main-container flex justify-center'>
+      <div className='flex flex-col inner-container'>
+        <p className='font-light'>I'm a full stack software engineer and a
+          graduate student in the Honors Cooperative Program at Stanford pursuing
+          a Masters in Computer Science. I have interests in Artifical Intelligence,
+          Data Management and solving challenging problems.</p>
+      </div>
+    </div>
+  )
+}
+
+function BoeingLogoContainer() {
+  return (
+    <div className='logo-container self-center'>
+      <Image
+        src='/boeing_logo.svg'
+        width={110}
+        height={110}
+        alt='Boeing logo'
+      />
+    </div>
+  )
+}
+
+function Work() {
+  return (
+    <div id='work' className='main-container flex justify-center'>
+      <div className='flex-col inner-container'>
+        <div className='flex gap-5'>
+          <BoeingLogoContainer/>
+          <div className='flex-col flex 1'>
+            <List dense={ false }>
+              <ListItem>
+                <ListItemText>
+                  <p>
+                    Software Development Engineer
+                  </p>
+                  <p className='font-light'>
+                    January 2022 - Present
+                  </p>
+                  <p className='font-light'>
+                    Menlo Park, CA
+                  </p>
+                </ListItemText>
+              </ListItem>
+              <ListItem>
+                <ListItemText className='font-light'>
+                  <span className='font-light'>
+                    Upgraded a suite of airplane maintenance web applications (Angular, Java Spring Boot) from
+                    deprecated AngularJS to Angular v15+ resulting in increased performance and scalability
+                  </span>
+                </ListItemText>
+              </ListItem>
+              <ListItem>
+                <ListItemText className='font-light'>
+                  <span className='font-light'>
+                    Created new Business Intelligence Reporting Tool (BIRT) reporting design that saves maintenance engineering customers
+                    600 hours per year by removing manual data collection
+                  </span>
+                </ListItemText>
+              </ListItem>
+              <ListItem>
+                <ListItemText className='font-light'>
+                  <span className='font-light'>
+                    Generated new CI/CD Gitlab pipeline of Cypress end-to-end testing of our application eliminating manual tests
+                  </span>
+                </ListItemText>
+              </ListItem>
+              <ListItem>
+                <ListItemText className='font-light'>
+                  <span className='font-light'>
+                    Built custom Docker image containing Node.js, Maven, JDK-17, and Cypress for deploying to our Gitlab pipeline
+                  </span>
+                </ListItemText>
+              </ListItem>
+              <ListItem>
+                <ListItemText className='font-light'>
+                  <span className='font-light'>
+                    Develop software within an Agile environment working with international team members
+                  </span>
+                </ListItemText>
+              </ListItem>
+            </List>
+            <Divider/>
+          </div>
+        </div>
+        <div className='flex gap-5'>
+          <BoeingLogoContainer/>
+          <div className='flex-col flex 1'>
+            <List dense={ false }>
+              <ListItem>
+                <ListItemText>
+                  <p>
+                    Mechanical Engineer
+                  </p>
+                  <p className='font-light'>
+                    January 2008 - January 2022
+                  </p>
+                  <p className='font-light'>
+                    Seattle, WA
+                  </p>
+                </ListItemText>
+              </ListItem>
+              <ListItem>
+                <ListItemText className='font-light'>
+                  <span className='font-light'>
+                    Led large $1M reverse engineering project of competitor's aircraft wing and delivered
+                    data to 200+ product development engineers, executives, and business parters
+                  </span>
+                </ListItemText>
+              </ListItem>
+              <ListItem>
+                <ListItemText className='font-light'>
+                  <span className='font-light'>
+                    Captured 3D Laser geometry of entire wing using a Surphaser 100HSX and post-processed CAD models using Polyworks
+                    to enable industry benchmarking
+                  </span>
+                </ListItemText>
+              </ListItem>
+            </List>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function Schools() {
+  const schoolList = educationList.map(school =>
+    <div className='flex gap-5 content-center' key={ school.id }>
+      <div className='flex logo-container justify-center self-center'>
+        <Image
+          src={school.logoDetails.src}
+          width={school.logoDetails.width}
+          height={school.logoDetails.height}
+          alt={school.logoDetails.alt}
+        />
+      </div>
+      <div className='flex-col flex 1'>
+        <List dense={false}>
+          <ListItem>
+            <ListItemText>
+              <p>{school.name}</p>
+              <p className='font-light'>{school.degree}</p>
+              <p className='font-light'>{school.graduation}</p>
+            </ListItemText>
+          </ListItem>
+        </List>
+      </div>
+    </div>
+  );
+  return <> {schoolList} </>
+}
+
+function Education() {
+  return (
+    <div id='education' className='main-container flex justify-center'>
+      <div className='flex-col inner-container'>
+        <Schools></Schools>
+      </div>
+    </div>
+  )
+}
+
+function Skills() {
+  return (
+    <div id='skills' className='main-container flex justify-center'>
+      <div className='flex flex-col inner-container'>
+        <div className='flex gap-5'>
+          <div className='logo-container flex-col'>
+            <List>
+              <ListItem>
+                <ListItemText>
+                  <p className='font-light'>
+                    Languages
+                  </p>
+                  <p className='font-light'>
+                    Frameworks
+                  </p>
+                  <p className='font-light'>
+                    Misc.
+                  </p>
+                </ListItemText>
+              </ListItem>
+            </List>
+          </div>
+          <div className='flex-col flex 1'>
+            <List>
+              <ListItem>
+                <ListItemText>
+                  <p className='font-light'>
+                    JavaScript/Typescript, Java, C/C++
+                  </p>
+                  <p className='font-light'>
+                    Angular, React, Spring Boot
+                  </p>
+                  <p className='font-light'>
+                    Linux, SQL, Node.js, Webpack, GitLab CI/CD, Azure DevOps, Lightroom, Photoshop
+                  </p>
+                </ListItemText>
+              </ListItem>
+            </List>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function PageSpacer() {
+  return (
+    <div className='p-10'></div>
+  )
+}
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+    <main>
+      <div id='page-container' className='container mx-auto'>
+        <Paper elevation={3}>
+          <PageSpacer/>
+          <Intro />
+          <div id='resume-container' className='mb-40'>
+            <Divider textAlign='center' className='main-container font-medium p-2'>ABOUT</Divider>
+            <About />
+            <Divider textAlign='center' className='main-container font-medium p-2'>WORK HISTORY</Divider>
+            <Work />
+            <Divider textAlign='center' className='main-container font-medium p-2'>EDUCATION</Divider>
+            <Education />
+            <Divider textAlign='center' className='main-container font-medium p-2'>SKILLS</Divider>
+            <Skills />
+            <PageSpacer/>
+          </div>
+        </Paper>
       </div>
     </main>
   );
