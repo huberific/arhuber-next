@@ -9,7 +9,8 @@ export const educationList = [
       width: 70,
       height: 70,
       alt: 'Stanford Logo'
-    }
+    },
+    site: 'https://www.cs.stanford.edu'
   },
   {
     id: 1,
@@ -21,7 +22,8 @@ export const educationList = [
       width: 125,
       height: 125,
       alt: 'OSU Logo'
-    }
+    },
+    site: 'https://oregonstate.edu'
   },
   {
     id: 2,
@@ -33,6 +35,7 @@ export const educationList = [
       width: 45,
       height: 45,
       alt: 'MSU Logo'
-    }
+    },
+    site: 'https://msu.edu'
   },
 ]

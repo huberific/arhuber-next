@@ -1,3 +1,5 @@
+'use client'
+
 import Image from 'next/image'
 import { Divider } from '@mui/material'
 import { Paper } from '@mui/material';
@@ -6,6 +8,8 @@ import { ListItem } from '@mui/material'
 import { ListItemText } from '@mui/material'
 import './styles.css'
 import { educationList } from './data';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 function Intro() {
   return (
@@ -28,10 +32,10 @@ function About() {
   return (
     <div id='about' className='main-container flex justify-center'>
       <div className='flex flex-col inner-container'>
-        <p className='font-light'>I'm a full stack software engineer and a
+        <p className='font-light'>I'm a full stack software engineer at Boeing and a
           graduate student in the Honors Cooperative Program at Stanford pursuing
           a Masters in Computer Science. I have interests in Artifical Intelligence,
-          Data Management and solving challenging problems.</p>
+          Data Management, and solving challenging problems.</p>
       </div>
     </div>
   )
@@ -39,14 +43,18 @@ function About() {
 
 function BoeingLogoContainer() {
   return (
-    <div className='logo-container self-center'>
-      <Image
-        src='/boeing_logo.svg'
-        width={110}
-        height={110}
-        alt='Boeing logo'
-      />
-    </div>
+    <motion.div className='logo-container self-center'
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.90 }}>
+      <Link href={'https://www.boeing.com'} rel="noopener noreferrer">
+        <Image
+          src='/boeing_logo.svg'
+          width={110}
+          height={110}
+          alt='Boeing logo'
+        />
+      </Link>
+    </motion.div>
   )
 }
 
@@ -156,14 +164,18 @@ function Work() {
 function Schools() {
   const schoolList = educationList.map(school =>
     <div className='flex gap-5 content-center' key={ school.id }>
-      <div className='flex logo-container justify-center self-center'>
-        <Image
-          src={school.logoDetails.src}
-          width={school.logoDetails.width}
-          height={school.logoDetails.height}
-          alt={school.logoDetails.alt}
-        />
-      </div>
+      <motion.div className='flex logo-container justify-center self-center'
+        whileHover={{ scale: 1.2, rotate: 360 }}
+        whileTap={{ scale: 0.90 }}>
+        <Link href={school.site} rel="noopener noreferrer">
+          <Image
+            src={school.logoDetails.src}
+            width={school.logoDetails.width}
+            height={school.logoDetails.height}
+            alt={school.logoDetails.alt}
+          />
+        </Link>
+      </motion.div>
       <div className='flex-col flex 1'>
         <List dense={false}>
           <ListItem>
