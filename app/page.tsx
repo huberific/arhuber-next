@@ -10,6 +10,7 @@ import './styles.css'
 import { educationList } from './data';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
 
 function Intro() {
   return (
@@ -21,9 +22,14 @@ function Intro() {
         height={300}
         alt='Picture of Aaron'
       />
-      <p className='content-center text-lg font-medium'>
-        Hi, I'm Aaron.
-      </p>
+      <div className='flex-col content-center'>
+        <p className='text-lg font-medium'>
+          Aaron Huber
+        </p>
+        <p className='text-lg font-light'>
+          Menlo Park, CA
+        </p>
+      </div>
     </div>
   )
 }
@@ -253,12 +259,24 @@ function PageSpacer() {
   )
 }
 
+function DownloadResume() {
+  return (
+    <div className='p-10 flex justify-end'>
+    <motion.div className='download-container flex justify-center'
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.90 }}>
+      <FileDownloadOutlinedIcon sx={{ color: '#696969' }}/>
+    </motion.div>
+    </div>
+  )
+}
+
 export default function Home() {
   return (
     <main>
       <div id='page-container' className='container mx-auto'>
         <Paper elevation={3}>
-          <PageSpacer/>
+          <DownloadResume/>
           <Intro />
           <div id='resume-container' className='mb-40'>
             <Divider textAlign='center' className='main-container font-medium p-2'>ABOUT</Divider>
