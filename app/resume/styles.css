@@ -15,10 +15,6 @@ body {
     max-width: 120px;
 }
 
-.logo-container:hover {
-    cursor: pointer;
-}
-
 .main-container {
     margin-left: 10%;
     width: 80%;
