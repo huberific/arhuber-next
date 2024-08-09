@@ -6,22 +6,45 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image'
 import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
+import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 
 import './styles.css'
 import Navbar from '../navbar/page';
 
+function BackArrow() {
+  return (
+    <div className='p-10 flex' style={{ width: '50%'}}>
+      <Link href={'/home'}>
+        <div>
+          <motion.div
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.90 }}
+          >
+            <Tooltip title='Home' placement='bottom' enterDelay={ 2000 }>
+              <KeyboardBackspaceIcon id='back-logo' sx={{ color: '#696969' }} />
+            </Tooltip>
+          </motion.div>
+        </div>
+      </Link>
+    </div>
+  )
+}
+
 function DownloadResume() {
   return (
-    <div className='p-10 flex justify-end'>
-      <Tooltip title='Resume' placement='bottom'>
-        <motion.div className='follow-logo flex justify-center'
+    <div className='p-10' style={{ width: '50%'}}>
+      <div key='download' className='follow-logo flex justify-end'>
+        <motion.div
           whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.90 }}>
+          whileTap={{ scale: 0.90 }}
+        >
           <Link href={'/AaronHuberResume.pdf'}>
-            <PictureAsPdfIcon id='pdf-logo' sx={{ color: '#696969' }}/>
+            <Tooltip title='Resume' placement='bottom'>
+              <PictureAsPdfIcon id='pdf-logo' sx={{ color: '#696969' }}/>
+            </Tooltip>
           </Link>
         </motion.div>
-    </Tooltip>
+      </div>
     </div>
   )
 }
@@ -46,6 +69,7 @@ function Intro() {
         <div className='flex gap-5'>
           <Tooltip title='arhuber@stanford.edu'>
             <motion.div
+              key='email'
               whileHover={{scale: 1.2}} onHoverStart={ e => e.stopPropagation()}>
               <Link href={'mailto:arhuber@stanford.edu'}>
                 <SvgIcon>
@@ -58,6 +82,7 @@ function Intro() {
           </Tooltip>
           <Tooltip title='Visit my Linkedin'>
             <motion.div
+              key='linkedin'
               whileHover={{scale: 1.2}} onHoverStart={ e => e.stopPropagation()}>
               <Link href={'https://linkedin.com/in/arhuber'}>
                 <SvgIcon viewBox='0 0 100 100'>
@@ -68,6 +93,7 @@ function Intro() {
           </Tooltip>
           <Tooltip title='Visit my Github'>
             <motion.div
+              key='github'
               whileHover={{scale: 1.2}} onHoverStart={ e => e.stopPropagation()}>
               <Link href={'https://github.com/huberific'}>
                 <SvgIcon viewBox='0 0 100 100'>
@@ -98,6 +124,7 @@ function About() {
 function BoeingLogoContainer() {
   return (
     <motion.div className='logo-container self-center'
+      key='boeing'
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.90 }}>
       <Link href={'https://www.boeing.com'}>
@@ -219,6 +246,7 @@ function Schools() {
   const schoolList = educationList.map(school =>
     <div className='flex gap-5 content-center' key={ school.id }>
       <motion.div className='flex logo-container justify-center self-center'
+        key={school.name}
         whileHover={{ scale: 1.2, rotate: 360 }}
         whileTap={{ scale: 0.90 }}>
         <Link href={school.site}>
@@ -311,23 +339,30 @@ export default function Resume() {
   return (
     <main>
       <Navbar title='Resume' />
-      <div id='page-container' className='container mx-auto'>
+      <motion.div key='main-div' id='page-container' className='container mx-auto'
+        initial={{opacity: 0}}
+        animate={{opacity: 1}}
+        transition={{delay: 0.2, duration: 1.5}}
+        >
         <Paper elevation={3}>
-          <DownloadResume/>
+          <div className='flex' style={{width: '100%'}}>
+            <BackArrow />
+            <DownloadResume/>
+          </div>
           <Intro />
-          <div id='resume-container' className='mb-40'>
-            <Divider textAlign='center' className='main-container font-medium p-2'>ABOUT</Divider>
+          <div id='resume-container' className='mb-40 flex-col'>
+            <Divider textAlign='center' variant='middle' className='divider font-medium p-2'>ABOUT</Divider>
             <About />
-            <Divider textAlign='center' className='main-container font-medium p-2'>WORK HISTORY</Divider>
+            <Divider textAlign='center' variant='middle' className='divider font-medium p-2'>WORK HISTORY</Divider>
             <Work />
-            <Divider textAlign='center' className='main-container font-medium p-2'>EDUCATION</Divider>
+            <Divider textAlign='center' variant='middle' className='divider font-medium p-2'>EDUCATION</Divider>
             <Education />
-            <Divider textAlign='center' className='main-container font-medium p-2'>SKILLS</Divider>
+            <Divider textAlign='center' variant='middle' className='divider font-medium p-2'>SKILLS</Divider>
             <Skills />
             <PageSpacer/>
           </div>
         </Paper>
-      </div>
+      </motion.div>
     </main>
   );
 }

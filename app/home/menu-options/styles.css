@@ -1,0 +1,8 @@
+.menu-options {
+    margin-top: 120px;
+}
+
+.menu-font {
+    font-size: min(3vw, 30px);
+    color: #505050;
+}
