@@ -3,7 +3,6 @@ body {
 }
 
 #page-container {
-    margin-top: 80px;
     min-width: 640px;
     width: 70%;
     max-width: 1024px;
@@ -16,6 +15,8 @@ body {
 }
 
 .main-container {
+    display: flex;
+    justify-content: center;
     margin-left: 10%;
     width: 80%;
 }

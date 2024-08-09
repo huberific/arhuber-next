@@ -28,7 +28,7 @@ export const educationList = [
   {
     id: 2,
     name: 'Michigan State University',
-    degree: 'B.S. Mechnical Engineering',
+    degree: 'B.S. Mechanical Engineering',
     graduation: 'August 2006',
     logoDetails: {
       src: '/msu_logo.svg',

@@ -8,6 +8,7 @@ import Image from 'next/image'
 import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 
 import './styles.css'
+import Navbar from '../navbar/page';
 
 function DownloadResume() {
   return (
@@ -306,9 +307,10 @@ function PageSpacer() {
   )
 }
 
-export default function Home() {
+export default function Resume() {
   return (
     <main>
+      <Navbar title='Resume' />
       <div id='page-container' className='container mx-auto'>
         <Paper elevation={3}>
           <DownloadResume/>
