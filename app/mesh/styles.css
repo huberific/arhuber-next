@@ -1,0 +1,7 @@
+body {
+    background-color: #F5F5F5;
+}
+
+.rect-motion:hover {
+    transform: scale(1.5);
+}

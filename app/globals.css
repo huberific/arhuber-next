@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.color-accent-1 {
+    fill: #505050;
+    stroke: #505050;
+    color: #505050;
+}
+
+.color-accent-2 {
+    stroke: #008080;
+    fill: #008080;
+    color: #008080;
+}

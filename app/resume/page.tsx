@@ -14,14 +14,14 @@ import Navbar from '../navbar/page';
 function BackArrow() {
   return (
     <div className='p-10 flex' style={{ width: '50%'}}>
-      <Link href={'/home'}>
+      <Link href={'/'}>
         <div>
           <motion.div
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.90 }}
           >
-            <Tooltip title='Home' placement='bottom' enterDelay={ 2000 }>
-              <KeyboardBackspaceIcon id='back-logo' sx={{ color: '#696969' }} />
+            <Tooltip title='Home' placement='bottom' enterDelay={ 1000 }>
+              <KeyboardBackspaceIcon id='back-logo' fontSize='large' sx={{ color: '#696969' }} />
             </Tooltip>
           </motion.div>
         </div>
@@ -39,8 +39,8 @@ function DownloadResume() {
           whileTap={{ scale: 0.90 }}
         >
           <Link href={'/AaronHuberResume.pdf'}>
-            <Tooltip title='Resume' placement='bottom'>
-              <PictureAsPdfIcon id='pdf-logo' sx={{ color: '#696969' }}/>
+            <Tooltip title='Resume' placement='bottom' enterDelay={ 1000 }>
+              <PictureAsPdfIcon id='pdf-logo' fontSize='large' sx={{ color: '#696969' }}/>
             </Tooltip>
           </Link>
         </motion.div>
@@ -103,19 +103,6 @@ function Intro() {
             </motion.div>
           </Tooltip>
         </div>
-      </div>
-    </div>
-  )
-}
-
-function About() {
-  return (
-    <div id='about' className='main-container flex justify-center'>
-      <div className='flex flex-col inner-container'>
-        <p className='font-light'>I'm a full stack software engineer at Boeing and a
-          graduate student in the Honors Cooperative Program at Stanford pursuing
-          a Masters in Computer Science. I have interests in Artifical Intelligence,
-          Data Management, and solving challenging problems.</p>
       </div>
     </div>
   )
@@ -221,7 +208,7 @@ function Work() {
               <ListItem>
                 <ListItemText className='font-light'>
                   <span className='font-light'>
-                    Led large $1M reverse engineering project of competitor's aircraft wing and delivered
+                    Led large $1M reverse engineering project of competitor&apos;s aircraft wing and delivered
                     data to 200+ product development engineers, executives, and business parters
                   </span>
                 </ListItemText>
@@ -338,26 +325,30 @@ function PageSpacer() {
 export default function Resume() {
   return (
     <main>
-      <Navbar title='Resume' />
+      <Navbar />
       <motion.div key='main-div' id='page-container' className='container mx-auto'
         initial={{opacity: 0}}
         animate={{opacity: 1}}
         transition={{delay: 0.2, duration: 1.5}}
         >
-        <Paper elevation={3}>
+        <Paper elevation={3} sx={{bgcolor: '#f5f5f5'}}>
           <div className='flex' style={{width: '100%'}}>
             <BackArrow />
             <DownloadResume/>
           </div>
           <Intro />
-          <div id='resume-container' className='mb-40 flex-col'>
-            <Divider textAlign='center' variant='middle' className='divider font-medium p-2'>ABOUT</Divider>
-            <About />
-            <Divider textAlign='center' variant='middle' className='divider font-medium p-2'>WORK HISTORY</Divider>
+          <div id='resume-container' className='mb-40'>
+            <div className='divider mb-5'>
+              <Divider textAlign='center'>WORK HISTORY</Divider>
+            </div>
             <Work />
-            <Divider textAlign='center' variant='middle' className='divider font-medium p-2'>EDUCATION</Divider>
+            <div className='divider mb-5'>
+              <Divider textAlign='center'>EDUCATION</Divider>
+            </div>
             <Education />
-            <Divider textAlign='center' variant='middle' className='divider font-medium p-2'>SKILLS</Divider>
+            <div className='divider mb-5'>
+              <Divider textAlign='center'>SKILLS</Divider>
+            </div>
             <Skills />
             <PageSpacer/>
           </div>
