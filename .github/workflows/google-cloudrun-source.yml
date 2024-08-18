@@ -53,7 +53,7 @@ on:
 env:
   PROJECT_ID: ${{ secrets.PROJECT_ID }} # Google Cloud project id
   SERVICE: ${{ secrets.SERVICE }} # Cloud Run service name
-  REGION: ${{ secrets.SERVICE }} # Cloud Run service region
+  REGION: ${{ secrets.REGION }} # Cloud Run service region
 
 jobs:
   deploy:
@@ -83,10 +83,10 @@ jobs:
 
       - name: Deploy to Cloud Run
         id: deploy
-        uses: google-github-actions/deploy-cloudrun@v0
+        uses: google-github-actions/deploy-cloudrun@v2
         with:
-          service: ${{ env.SERVICE }}
-          region: ${{ env.REGION }}
+          service: ${{ secrets.SERVICE }}
+          region: ${{ secrets.REGION }}
           # NOTE: If required, update to the appropriate source folder
           source: ./
 
