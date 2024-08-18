@@ -3,7 +3,7 @@ name: arhuber-next
 on:
   push:
     branches:
-      -main
+      - main
 
 env:
   PROJECT_ID: ${{ secrets.CLOUD_RUN_PROJECT_NAME }}
@@ -18,8 +18,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
     
-       # Authenticate with Google Cloud
-       - id: "auth"
+      # Authenticate with Google Cloud
+      - id: "auth"
         uses: "google-github-actions/auth@v2"
         with:
           credentials_json: "${{ secrets.CLOUD_RUN_SERVICE_ACCOUNT }}"
