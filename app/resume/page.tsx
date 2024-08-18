@@ -325,7 +325,6 @@ function PageSpacer() {
 export default function Resume() {
   return (
     <main>
-      <Navbar />
       <motion.div key='main-div' id='page-container' className='container mx-auto'
         initial={{opacity: 0}}
         animate={{opacity: 1}}
