@@ -51,9 +51,9 @@ on:
     branches: [ "main" ]
 
 env:
-  PROJECT_ID: ${{ secrets.PROJECT_ID }} # Google Cloud project id
-  SERVICE: ${{ secrets.SERVICE }} # Cloud Run service name
-  REGION: ${{ secrets.REGION }} # Cloud Run service region
+  PROJECT_ID: arhuber-next # Google Cloud project id
+  SERVICE: arhuber-site # Cloud Run service name
+  REGION: us-west1 # Cloud Run service region
 
 jobs:
   deploy:
