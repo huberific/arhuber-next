@@ -1,6 +1,3 @@
-# reference video on setting up github actions with GCP:
-# https://www.youtube.com/watch?v=IjUnQ9kMnVo&t=2411s
-
 name: arhuber-next
 
 on:
