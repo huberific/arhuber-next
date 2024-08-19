@@ -65,7 +65,7 @@ function Intro() {
           Aaron Huber
         </p>
         <p className='text-base font-light mb-2'>
-          Emerald Hills, CA
+          Redwood City, CA
         </p>
         <div className='flex gap-5'>
           <Tooltip title='arhuber@stanford.edu'>
