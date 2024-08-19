@@ -64,7 +64,7 @@ function Intro() {
           Aaron Huber
         </p>
         <p className='font-light mb-2 small-sc-font-100'>
-          Redwood City, CA
+          Emerald Hills, CA
         </p>
         <div className='flex gap-5'>
           <div>
