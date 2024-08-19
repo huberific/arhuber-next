@@ -4,7 +4,7 @@ import './styles.css'
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { useWindowSize } from './useWindowSize';
+import { useWindowSize } from './use-window-size';
 
 export default function Homefirst() {
   const width = Math.min(useWindowSize().width * 0.3, 300);
