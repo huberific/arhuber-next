@@ -113,8 +113,8 @@ function BoeingLogoContainer() {
 
 function Work2() {
   return (
-    <div className='mt-2'>
-      <div className='flex justify-evenly'>
+    <div className='mt-2 bg-cyan-700 rounded-lg'>
+      <div className='flex justify-evenly bg-cyan-900 rounded-lg'>
         <BoeingLogoContainer />
         <div>
           <List dense={true}>
@@ -175,8 +175,7 @@ function Work2() {
           </ListItem>
         </List>
       </div>
-      <Divider className='mt-1 mb-1' />
-      <div className='flex justify-evenly'>
+      <div className='flex justify-evenly bg-cyan-900 rounded-lg'>
         <BoeingLogoContainer />
         <div>
           <List dense={true}>
@@ -195,8 +194,8 @@ function Work2() {
             </ListItem>
           </List>
         </div>
-        </div>
-        <div>
+      </div>
+      <div>
         <div className='text-cyan-50'>
           <List dense={true}>
             <ListItem>
@@ -425,7 +424,6 @@ export default function SmallResume() {
         <Intro />
         <div className='mt-10'>
           <span className='font-thin text-cyan-100'>Work History</span>
-          <Divider className='mt-2' />
           <Work2 />
         </div>
 

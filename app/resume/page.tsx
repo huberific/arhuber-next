@@ -325,13 +325,12 @@ function PageSpacer() {
 
 
 export default function Resume() {
-  const isSmallScreen = useMediaQuery({ query: '(max-width: 1200px' });
-  return isSmallScreen ? (
+  return (
     <>
+    <div className='md:hidden'>
       <SmallResume />
-    </>
-  ) : (
-    <>
+    </div>
+    <div className='hidden md:block'>
       <motion.div key='main-div' id='page-container' className='container mx-auto'
         initial={{opacity: 0}}
         animate={{opacity: 1}}
@@ -360,6 +359,7 @@ export default function Resume() {
           </div>
         </Paper>
       </motion.div>
+      </div>
     </>
   );
 }
