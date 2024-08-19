@@ -7,7 +7,6 @@ import Link from 'next/link';
 import Image from 'next/image'
 import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
-import { useWindowSize } from '../use-window-size';
 
 import './styles.css'
 

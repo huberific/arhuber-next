@@ -7,7 +7,7 @@ import Link from 'next/link';
 import Image from 'next/image'
 import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
-import { useWindowSize } from '../use-window-size';
+import MediaQuery, { useMediaQuery } from 'react-responsive';
 
 import './styles.css'
 import SmallResume from './small-resume';
@@ -325,7 +325,8 @@ function PageSpacer() {
 
 
 export default function Resume() {
-  return useWindowSize().width < 650 ? (
+  const isSmallScreen = useMediaQuery({ query: '(max-width: 1200px' });
+  return isSmallScreen ? (
     <>
       <SmallResume />
     </>
