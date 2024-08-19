@@ -420,7 +420,7 @@ function PageSpacer() {
 export default function SmallResume() {
   return (
     <>
-      <div className='main-container'>
+      <div className='main-container mb-30'>
         <Intro />
         <div className='mt-10'>
           <span className='font-thin text-cyan-100'>Work History</span>
