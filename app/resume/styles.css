@@ -31,6 +31,10 @@
     @apply text-cyan-300
 }
 
+.top-work-bar {
+    border-top-right-radius: 0.5rem;
+    border-top-left-radius: 0.5rem;
+}
 
 .divider {
     /* margin-left: 10%; */

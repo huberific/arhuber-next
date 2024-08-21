@@ -111,197 +111,98 @@ function BoeingLogoContainer() {
   )
 }
 
-function Work2() {
-  return (
-    <div className='mt-2 bg-cyan-700 rounded-lg'>
-      <div className='flex justify-evenly bg-cyan-900 rounded-lg'>
-        <BoeingLogoContainer />
-        <div>
-          <List dense={true}>
-            <ListItem>
-              <ListItemText className='font-lite text-cyan-100'>
-                <p>
-                  Full Stack Developer
-                </p>
-                <p className='font-light'>
-                  Jan 2022 - Present
-                </p>
-                <p className='font-light'>
-                  Menlo Park, CA
-                </p>
-              </ListItemText>
-            </ListItem>
-          </List>
-        </div>
-      </div>
-      <div className='text-cyan-50'>
-        <List dense={true}>
-          <ListItem>
-            <ListItemText className='font-light text-justify'>
-              <span className='font-light'>
-                Upgraded a suite of airplane maintenance web applications (Angular, Java Spring Boot) from
-                deprecated AngularJS to Angular v15+ resulting in increased performance and scalability
-              </span>
-            </ListItemText>
-          </ListItem>
-          <ListItem>
-            <ListItemText className='font-light text-justify'>
-              <span className='font-light'>
-                Created new Business Intelligence Reporting Tool (BIRT) reporting design that saves maintenance engineering customers
-                600 hours per year by removing manual data collection
-              </span>
-            </ListItemText>
-          </ListItem>
-          <ListItem>
-            <ListItemText className='font-light text-justify'>
-              <span className='font-light'>
-                Generated new CI/CD Gitlab pipeline of Cypress end-to-end testing of our application eliminating manual tests
-              </span>
-            </ListItemText>
-          </ListItem>
-          <ListItem>
-            <ListItemText className='font-light text-justify'>
-              <span className='font-light'>
-                Built custom Docker image containing Node.js, Maven, JDK-17, and Cypress for deploying to our Gitlab pipeline
-              </span>
-            </ListItemText>
-          </ListItem>
-          <ListItem>
-            <ListItemText className='font-light text-justify'>
-              <span className='font-light'>
-                Develop software within an Agile environment working with international team members
-              </span>
-            </ListItemText>
-          </ListItem>
-        </List>
-      </div>
-      <div className='flex justify-evenly bg-cyan-900 rounded-lg'>
-        <BoeingLogoContainer />
-        <div>
-          <List dense={true}>
-            <ListItem>
-              <ListItemText className='font-lite text-cyan-100'>
-                <p>
-                  Mechanical Engineer
-                </p>
-                <p className='font-light'>
-                  Jan 2008 - Jan 2022
-                </p>
-                <p className='font-light'>
-                  Seattle, WA
-                </p>
-              </ListItemText>
-            </ListItem>
-          </List>
-        </div>
-      </div>
-      <div>
-        <div className='text-cyan-50'>
-          <List dense={true}>
-            <ListItem>
-              <ListItemText className='font-light text-justify'>
-                <span className='font-light'>
-                  Led large $1M reverse engineering project of competitor&apos;s aircraft wing and delivered
-                  data to 200+ product development engineers, executives, and business parters
-                </span>
-              </ListItemText>
-            </ListItem>
-            <ListItem>
-              <ListItemText className='font-light text-justify'>
-                <span className='font-light'>
-                  Captured 3D Laser geometry of entire wing using a Surphaser 100HSX and post-processed CAD models using Polyworks
-                  to enable industry benchmarking
-                </span>
-              </ListItemText>
-            </ListItem>
-          </List>
-        </div>
-      </div>
-    </div>
-  )
-}
-
 function Work() {
   return (
-    <div id='work' className='main-container flex flex-col justify-center'>
-      <div className='flex-col inner-container'>
-        <div className='flex gap-5'>
+    <div className='mb-40'>
+      <div className='mt-2 bg-cyan-700 rounded-lg'>
+        <div className='flex justify-evenly bg-cyan-900 top-work-bar'>
           <BoeingLogoContainer />
-          <div className='flex-col flex 1'>
-            <List dense={false}>
+          <div>
+            <List dense={true}>
               <ListItem>
-                <ListItemText>
+                <ListItemText className='font-lite text-cyan-100'>
                   <p>
-                    Software Development Engineer
+                    Full Stack Developer
                   </p>
                   <p className='font-light'>
-                    January 2022 - Present
+                    Jan 2022 - Present
                   </p>
                   <p className='font-light'>
                     Menlo Park, CA
                   </p>
                 </ListItemText>
               </ListItem>
-              <ListItem>
-                <ListItemText className='font-light'>
-                  <span className='font-light'>
-                    Upgraded a suite of airplane maintenance web applications (Angular, Java Spring Boot) from
-                    deprecated AngularJS to Angular v15+ resulting in increased performance and scalability
-                  </span>
-                </ListItemText>
-              </ListItem>
-              <ListItem>
-                <ListItemText className='font-light'>
-                  <span className='font-light'>
-                    Created new Business Intelligence Reporting Tool (BIRT) reporting design that saves maintenance engineering customers
-                    600 hours per year by removing manual data collection
-                  </span>
-                </ListItemText>
-              </ListItem>
-              <ListItem>
-                <ListItemText className='font-light'>
-                  <span className='font-light'>
-                    Generated new CI/CD Gitlab pipeline of Cypress end-to-end testing of our application eliminating manual tests
-                  </span>
-                </ListItemText>
-              </ListItem>
-              <ListItem>
-                <ListItemText className='font-light'>
-                  <span className='font-light'>
-                    Built custom Docker image containing Node.js, Maven, JDK-17, and Cypress for deploying to our Gitlab pipeline
-                  </span>
-                </ListItemText>
-              </ListItem>
-              <ListItem>
-                <ListItemText className='font-light'>
-                  <span className='font-light'>
-                    Develop software within an Agile environment working with international team members
-                  </span>
-                </ListItemText>
-              </ListItem>
             </List>
-            <Divider />
           </div>
         </div>
-        <div className='flex gap-5'>
+        <div className='text-cyan-50'>
+          <List dense={true}>
+            <ListItem>
+              <ListItemText className='font-light text-justify'>
+                <span className='font-light'>
+                  Upgraded a suite of airplane maintenance web applications (Angular, Java Spring Boot) from
+                  deprecated AngularJS to Angular v15+ resulting in increased performance and scalability
+                </span>
+              </ListItemText>
+            </ListItem>
+            <ListItem>
+              <ListItemText className='font-light text-justify'>
+                <span className='font-light'>
+                  Created new Business Intelligence Reporting Tool (BIRT) reporting design that saves maintenance engineering customers
+                  600 hours per year by removing manual data collection
+                </span>
+              </ListItemText>
+            </ListItem>
+            <ListItem>
+              <ListItemText className='font-light text-justify'>
+                <span className='font-light'>
+                  Generated new CI/CD Gitlab pipeline of Cypress end-to-end testing of our application eliminating manual tests
+                </span>
+              </ListItemText>
+            </ListItem>
+            <ListItem>
+              <ListItemText className='font-light text-justify'>
+                <span className='font-light'>
+                  Built custom Docker image containing Node.js, Maven, JDK-17, and Cypress for deploying to our Gitlab pipeline
+                </span>
+              </ListItemText>
+            </ListItem>
+            <ListItem>
+              <ListItemText className='font-light text-justify'>
+                <span className='font-light'>
+                  Develop software within an Agile environment working with international team members
+                </span>
+              </ListItemText>
+            </ListItem>
+          </List>
+        </div>
+      </div>
+      <div className='mt-5 bg-cyan-700 rounded-lg'>
+        <div className='flex justify-evenly bg-cyan-900 top-work-bar'>
           <BoeingLogoContainer />
-          <div className='flex-col flex 1'>
-            <List dense={false}>
+          <div>
+            <List dense={true}>
               <ListItem>
-                <ListItemText>
+                <ListItemText className='font-lite text-cyan-100'>
                   <p>
                     Mechanical Engineer
                   </p>
                   <p className='font-light'>
-                    January 2008 - January 2022
+                    Jan 2008 - Jan 2022
                   </p>
                   <p className='font-light'>
                     Seattle, WA
                   </p>
                 </ListItemText>
               </ListItem>
+            </List>
+          </div>
+        </div>
+        <div>
+          <div className='text-cyan-50'>
+            <List dense={true}>
               <ListItem>
-                <ListItemText className='font-light'>
+                <ListItemText className='font-light text-justify'>
                   <span className='font-light'>
                     Led large $1M reverse engineering project of competitor&apos;s aircraft wing and delivered
                     data to 200+ product development engineers, executives, and business parters
@@ -309,10 +210,17 @@ function Work() {
                 </ListItemText>
               </ListItem>
               <ListItem>
-                <ListItemText className='font-light'>
+                <ListItemText className='font-light text-justify'>
                   <span className='font-light'>
                     Captured 3D Laser geometry of entire wing using a Surphaser 100HSX and post-processed CAD models using Polyworks
                     to enable industry benchmarking
+                  </span>
+                </ListItemText>
+              </ListItem>
+              <ListItem>
+                <ListItemText className='font-light text-justify'>
+                  <span className='font-light'>
+                    Ask me more about my time as a Mechanical Engineer
                   </span>
                 </ListItemText>
               </ListItem>
@@ -423,8 +331,8 @@ export default function SmallResume() {
       <div className='main-container mb-30'>
         <Intro />
         <div className='mt-10'>
-          <span className='font-thin text-cyan-100'>Work History</span>
-          <Work2 />
+          <span className='font-extralight text-cyan-50'>Work History</span>
+          <Work />
         </div>
 
       </div>
