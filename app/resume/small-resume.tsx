@@ -13,7 +13,7 @@ import './styles.css'
 function BackArrow() {
   return (
     <div className='p-10 flex' style={{ width: '50%' }}>
-      <Link href={'/'}>
+      <Link href={'/home'}>
         <div>
           <motion.div
             whileHover={{ scale: 1.1 }}

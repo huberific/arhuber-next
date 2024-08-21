@@ -1,8 +1,6 @@
 'use client'
 
 import { motion } from 'framer-motion';
-import { usePathname } from 'next/navigation';
-import Link from 'next/link';
 
 import './styles.css'
 
@@ -47,8 +45,8 @@ function Divider({ props }: { props: any }) {
 }
 
 export default function Navbar() {
-  return usePathname() === '/' ? (
-    <>
+  return (
+    <div className='navbar-container'>
       <div className='flex justify-center'>
         <motion.h1 id='header'
           initial={{ opacity: 0 }}
@@ -57,15 +55,6 @@ export default function Navbar() {
         >arhuber.dev</motion.h1>
       </div>
       <Dividers type='animated' />
-    </>
-  ) : (
-    <>
-      <div className='flex justify-center'>
-        <Link href={'/'}>
-          <p className='font-light' id='header'>arhuber.dev</p>
-        </Link>
-      </div>
-      <Dividers type='static' />
-    </>
-  )
+    </div>
+  );
 }
