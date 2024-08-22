@@ -98,7 +98,7 @@ function Intro() {
 
 function BoeingLogoContainer() {
   return (
-    <div className='logo-container self-center ml-3'>
+    <div className='logo-container self-center ml-4'>
       <Link href={'https://www.boeing.com'}>
         <Image
           src='/boeing_logo_white.svg'
@@ -234,7 +234,7 @@ function Work() {
 
 function Schools() {
   const schoolList = educationList.map(school =>
-    <div className='flex gap-2 content-center' key={school.id}>
+    <div className='flex gap-2 ml-1 mr-1' key={school.id}>
       <div className='flex logo-container justify-center self-center'>
         <Link href={school.site}>
           <Image
@@ -245,7 +245,7 @@ function Schools() {
           />
         </Link>
       </div>
-      <div className='flex-col flex 1'>
+      <div>
         <List dense={true}>
           <ListItem>
             <ListItemText>
@@ -328,7 +328,7 @@ export default function SmallResume() {
         <div className='mt-10'>
           <p className='font-extralight text-cyan-50'>Work History</p>
           <Work />
-          <p className='font-extralight text-cyan-50 mt-5'>Education</p>
+          <p className='font-extralight text-cyan-50 mt-10'>Education</p>
           <Education />
         </div>
 
