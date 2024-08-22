@@ -113,7 +113,7 @@ function BoeingLogoContainer() {
 
 function Work() {
   return (
-    <div className='mb-40'>
+    <div>
       <div className='mt-2 bg-cyan-700 rounded-lg'>
         <div className='flex justify-between bg-cyan-900 top-work-bar'>
           <BoeingLogoContainer />
@@ -234,27 +234,24 @@ function Work() {
 
 function Schools() {
   const schoolList = educationList.map(school =>
-    <div className='flex gap-5 content-center' key={school.id}>
-      <motion.div className='flex logo-container justify-center self-center'
-        key={school.name}
-        whileHover={{ scale: 1.2, rotate: 360 }}
-        whileTap={{ scale: 0.90 }}>
+    <div className='flex gap-2 content-center' key={school.id}>
+      <div className='flex logo-container justify-center self-center'>
         <Link href={school.site}>
           <Image
-            src={school.logoDetails.src}
-            width={school.logoDetails.width}
-            height={school.logoDetails.height}
+            src={school.logoDetails.src_dark}
+            width={school.logoDetails.width_sm}
+            height={school.logoDetails.height_sm}
             alt={school.logoDetails.alt}
           />
         </Link>
-      </motion.div>
+      </div>
       <div className='flex-col flex 1'>
-        <List dense={false}>
+        <List dense={true}>
           <ListItem>
             <ListItemText>
-              <p>{school.name}</p>
-              <p className='font-light'>{school.degree}</p>
-              <p className='font-light'>{school.graduation}</p>
+              <p className='text-sm font-semibold text-cyan-50'>{school.name}</p>
+              <p className='text-xs font-thin text-cyan-50'>{school.degree}</p>
+              <p className='text-xs font-thin text-cyan-50'>{school.graduation}</p>
             </ListItemText>
           </ListItem>
         </List>
@@ -266,10 +263,8 @@ function Schools() {
 
 function Education() {
   return (
-    <div id='education' className='main-container flex justify-center'>
-      <div className='flex-col inner-container'>
+    <div id='education' className='bg-slate-600 rounded-lg mt-2 mb-10'>
         <Schools></Schools>
-      </div>
     </div>
   )
 }
@@ -331,8 +326,10 @@ export default function SmallResume() {
       <div className='main-container mb-30'>
         <Intro />
         <div className='mt-10'>
-          <span className='font-extralight text-cyan-50'>Work History</span>
+          <p className='font-extralight text-cyan-50'>Work History</p>
           <Work />
+          <p className='font-extralight text-cyan-50 mt-5'>Education</p>
+          <Education />
         </div>
 
       </div>
