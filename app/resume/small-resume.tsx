@@ -98,7 +98,7 @@ function Intro() {
 
 function BoeingLogoContainer() {
   return (
-    <div className='logo-container self-center'>
+    <div className='logo-container self-center ml-3'>
       <Link href={'https://www.boeing.com'}>
         <Image
           src='/boeing_logo_white.svg'
@@ -115,7 +115,7 @@ function Work() {
   return (
     <div className='mb-40'>
       <div className='mt-2 bg-cyan-700 rounded-lg'>
-        <div className='flex justify-evenly bg-cyan-900 top-work-bar'>
+        <div className='flex justify-between bg-cyan-900 top-work-bar'>
           <BoeingLogoContainer />
           <div>
             <List dense={true}>
@@ -178,7 +178,7 @@ function Work() {
         </div>
       </div>
       <div className='mt-5 bg-cyan-700 rounded-lg'>
-        <div className='flex justify-evenly bg-cyan-900 top-work-bar'>
+        <div className='flex justify-between bg-cyan-900 top-work-bar'>
           <BoeingLogoContainer />
           <div>
             <List dense={true}>
