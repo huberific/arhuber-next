@@ -16,6 +16,7 @@
         margin-right: 10%;
         margin-left: 10%;
         height: 1px;
+        border-radius: max(0.8vh, 3px);
     }
 
     #divider1 {
