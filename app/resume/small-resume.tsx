@@ -34,7 +34,7 @@ function DownloadResume() {
     <div>
       <a href={'/AaronHuberResume.pdf'} download={'AaronHuberResume'}>
         <Tooltip title='Download resume' placement='bottom' enterDelay={1000}>
-          <PictureAsPdfIcon id='pdf-logo' className='sm-sc-logo' fontSize='large' />
+          <PictureAsPdfIcon id='pdf-logo' sx={{color: '#ecfeff'}}/>
         </Tooltip>
       </a>
     </div>
