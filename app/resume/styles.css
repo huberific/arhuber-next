@@ -19,6 +19,10 @@
     border-radius: 20px;
 }
 
+#pdf-logo {
+    height: 25px; 
+}
+
 .small-sc-font-100 {
     @apply text-cyan-100
 }

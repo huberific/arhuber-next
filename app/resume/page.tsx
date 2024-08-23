@@ -39,11 +39,11 @@ function DownloadResume() {
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.90 }}
         >
-          <Link href={'/AaronHuberResume.pdf'}>
-            <Tooltip title='Resume' placement='bottom' enterDelay={1000}>
+          <a href={'/AaronHuberResume.pdf'} download={'AaronHuberResume'}>
+            <Tooltip title='Download resume' placement='bottom' enterDelay={1000}>
               <PictureAsPdfIcon id='pdf-logo' fontSize='large' sx={{ color: '#696969' }} />
             </Tooltip>
-          </Link>
+          </a>
         </motion.div>
       </div>
     </div>
