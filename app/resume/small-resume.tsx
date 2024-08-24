@@ -109,7 +109,7 @@ function Work() {
   return (
     <div>
       <div className='mt-2 bg-cyan-700 bg-opacity-10 rounded-lg'>
-        <div className='flex justify-between bg-cyan-900 bg-opacity-30 top-work-bar'>
+        <div className='flex p-2 justify-between bg-cyan-900 bg-opacity-30 top-work-bar'>
           <BoeingLogoContainer />
           <div>
             <List dense={true}>
@@ -129,7 +129,7 @@ function Work() {
             </List>
           </div>
         </div>
-        <div className='text-cyan-50'>
+        <div className='text-cyan-50 p-2'>
           <List dense={true}>
             <ListItem>
               <ListItemText className='font-light text-justify'>
@@ -150,7 +150,7 @@ function Work() {
             <ListItem>
               <ListItemText className='font-light text-justify'>
                 <span className='font-light'>
-                  Generated new CI/CD Gitlab pipeline of Cypress end-to-end testing of our application eliminating manual tests
+                  Generated new CI/CD Gitlab pipeline of Cypress end-to-end testing of our application eliminating +1000 hrs of manual testing per year
                 </span>
               </ListItemText>
             </ListItem>
@@ -172,7 +172,7 @@ function Work() {
         </div>
       </div>
       <div className='mt-5 bg-cyan-700 bg-opacity-10 rounded-lg'>
-        <div className='flex justify-between bg-cyan-900 bg-opacity-30 top-work-bar'>
+        <div className='flex p-2 justify-between bg-cyan-900 bg-opacity-30 top-work-bar'>
           <BoeingLogoContainer />
           <div>
             <List dense={true}>
@@ -192,7 +192,7 @@ function Work() {
             </List>
           </div>
         </div>
-        <div>
+        <div className='p-2'>
           <div className='text-cyan-50'>
             <List dense={true}>
               <ListItem>
@@ -207,14 +207,14 @@ function Work() {
                 <ListItemText className='font-light text-justify'>
                   <span className='font-light'>
                     Captured 3D Laser geometry of entire wing using a Surphaser 100HSX and post-processed CAD models using Polyworks
-                    to enable industry benchmarking
+                    to enable industry cost analysis benchmarking
                   </span>
                 </ListItemText>
               </ListItem>
               <ListItem>
                 <ListItemText className='font-light text-justify'>
                   <span className='font-light'>
-                    Ask me more about my time as a Mechanical Engineer
+                    Led multiple product development projects using advanced stress analysis techniques, such as Finite Element Analysis
                   </span>
                 </ListItemText>
               </ListItem>
@@ -267,44 +267,42 @@ function Education() {
 
 function Skills() {
   return (
-    <div id='skills' className='main-container flex justify-center'>
-      <div className='flex flex-col inner-container'>
-        <div className='flex gap-5'>
-          <div className='logo-container flex-col'>
-            <List>
+    <div id='skills' className='bg-cyan-900 bg-opacity-30 rounded-lg flex mt-2 mb-10 text-cyan-50'>
+        <div className='flex gap-10 p-2'>
+          <div className='logo-container'>
+            <List dense={true}>
               <ListItem>
                 <ListItemText>
-                  <p className='font-light'>
-                    Languages
+                  <p>
+                    Languages:
                   </p>
-                  <p className='font-light'>
-                    Frameworks
+                  <p>
+                    Frameworks:
                   </p>
-                  <p className='font-light'>
-                    Misc.
+                  <p>
+                    Misc:
                   </p>
                 </ListItemText>
               </ListItem>
             </List>
           </div>
-          <div className='flex-col flex 1'>
-            <List>
+          <div className='flex 1'>
+            <List dense={true}>
               <ListItem>
                 <ListItemText>
                   <p className='font-light'>
-                    JavaScript/Typescript, Java, C/C++
+                    JavaScript/Typescript, Java
                   </p>
                   <p className='font-light'>
                     Angular, React, Spring Boot
                   </p>
                   <p className='font-light'>
-                    Linux, SQL, Node.js, Webpack, GitLab CI/CD, Azure DevOps, Lightroom, Photoshop
+                    Linux, SQL, Node.js, Webpack, GitLab CI/CD, Azure DevOps, Blender, Lightroom, Photoshop
                   </p>
                 </ListItemText>
               </ListItem>
             </List>
           </div>
-        </div>
       </div>
     </div>
   )
@@ -326,6 +324,8 @@ export default function SmallResume() {
           <Work />
           <p className='font-extralight text-cyan-50 mt-10'>Education</p>
           <Education />
+          <p className='font-extralight text-cyan-50 mt-10'>Skills</p>
+          <Skills />
         </div>
 
       </div>
