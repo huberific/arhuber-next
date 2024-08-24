@@ -43,7 +43,7 @@ function DownloadResume() {
 
 function Intro() {
   return (
-    <div id='profile-container' className='main-container mt-10 flex flex-col gap-8 justify-center'>
+    <div id='profile-container' className='main-container mt-10 flex flex-col gap-8 items-center'>
       <Image
         id='profile-pic'
         className='content-center'
@@ -108,13 +108,13 @@ function BoeingLogoContainer() {
 function Work() {
   return (
     <div>
-      <div className='mt-2 bg-cyan-700 rounded-lg'>
-        <div className='flex justify-between bg-cyan-900 top-work-bar'>
+      <div className='mt-2 bg-cyan-700 bg-opacity-10 rounded-lg'>
+        <div className='flex justify-between bg-cyan-900 bg-opacity-30 top-work-bar'>
           <BoeingLogoContainer />
           <div>
             <List dense={true}>
               <ListItem>
-                <ListItemText className='font-lite text-cyan-100'>
+                <ListItemText className='font-lite text-cyan-50'>
                   <p>
                     Full Stack Developer
                   </p>
@@ -171,13 +171,13 @@ function Work() {
           </List>
         </div>
       </div>
-      <div className='mt-5 bg-cyan-700 rounded-lg'>
-        <div className='flex justify-between bg-cyan-900 top-work-bar'>
+      <div className='mt-5 bg-cyan-700 bg-opacity-10 rounded-lg'>
+        <div className='flex justify-between bg-cyan-900 bg-opacity-30 top-work-bar'>
           <BoeingLogoContainer />
           <div>
             <List dense={true}>
               <ListItem>
-                <ListItemText className='font-lite text-cyan-100'>
+                <ListItemText className='font-lite text-cyan-50'>
                   <p>
                     Mechanical Engineer
                   </p>
@@ -257,8 +257,10 @@ function Schools() {
 
 function Education() {
   return (
-    <div id='education' className='bg-slate-600 rounded-lg mt-2 mb-10'>
-      <Schools></Schools>
+    <div id='education' className='bg-cyan-900 bg-opacity-30 rounded-lg mt-2 mb-10 flex'>
+      <div id='schools-container' className='self-center p-4' style={{width: '350px', margin: '0 auto'}}>
+        <Schools></Schools>
+      </div>
     </div>
   )
 }
