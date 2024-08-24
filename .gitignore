@@ -40,3 +40,5 @@ README_deploy.txt
 
 # Ignore generated credentials from google-github-actions/auth
 arhuber-next*.json
+
+todo.txt
