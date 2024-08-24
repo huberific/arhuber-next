@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 
 import './styles.css'
+import Link from 'next/link';
 
 function Dividers({ type }: { type: string }) {
   const dividers = [];
@@ -46,15 +47,17 @@ function Divider({ props }: { props: any }) {
 
 export default function Navbar() {
   return (
-    <div className='navbar-container'>
-      <div className='flex justify-center'>
-        <motion.h1 id='header'
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1.6 }}
-        >arhuber.dev</motion.h1>
+    <Link href={'/home'}>
+      <div className='navbar-container'>
+        <div className='flex justify-center'>
+          <motion.h1 id='header'
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 1.6 }}
+          >arhuber.dev</motion.h1>
+        </div>
+        <Dividers type='animated' />
       </div>
-      <Dividers type='animated' />
-    </div>
+    </Link>
   );
 }
