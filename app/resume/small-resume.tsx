@@ -98,7 +98,7 @@ function Intro() {
 
 function BoeingLogoContainer() {
   return (
-    <div className='logo-container self-center ml-4'>
+    <div className='sm-logo-container self-center ml-4'>
       <Link href={'https://www.boeing.com'}>
         <Image
           src='/boeing_logo_white.svg'
@@ -118,7 +118,7 @@ function Work() {
         <div className='flex p-2 justify-between bg-cyan-900 bg-opacity-30 top-work-bar'>
           <BoeingLogoContainer />
           <div>
-            <List dense={true}>
+            <List dense={false}>
               <ListItem>
                 <ListItemText className='font-lite text-cyan-50'>
                   <p>
@@ -136,7 +136,7 @@ function Work() {
           </div>
         </div>
         <div className='text-cyan-50 p-2'>
-          <List dense={true}>
+          <List dense={false}>
             <ListItem>
               <ListItemText className='font-light text-justify'>
                 <span className='font-light'>
@@ -181,7 +181,7 @@ function Work() {
         <div className='flex p-2 justify-between bg-cyan-900 bg-opacity-30 top-work-bar'>
           <BoeingLogoContainer />
           <div>
-            <List dense={true}>
+            <List dense={false}>
               <ListItem>
                 <ListItemText className='font-lite text-cyan-50'>
                   <p>
@@ -200,7 +200,7 @@ function Work() {
         </div>
         <div className='p-2'>
           <div className='text-cyan-50'>
-            <List dense={true}>
+            <List dense={false}>
               <ListItem>
                 <ListItemText className='font-light text-justify'>
                   <span className='font-light'>
@@ -234,7 +234,7 @@ function Work() {
 
 function Schools() {
   const schoolList = educationList.map(school =>
-    <div className='flex gap-2 ml-1 mr-1' key={school.id}>
+    <div className='flex gap-2' key={school.id}>
       <div className='flex logo-container justify-center self-center'>
         <Link href={school.site}>
           <Image
@@ -246,12 +246,12 @@ function Schools() {
         </Link>
       </div>
       <div>
-        <List dense={true}>
+        <List dense={false}>
           <ListItem>
             <ListItemText>
-              <p className='text-sm font-semibold text-cyan-50'>{school.name}</p>
-              <p className='text-xs font-thin text-cyan-50'>{school.degree}</p>
-              <p className='text-xs font-thin text-cyan-50'>{school.graduation}</p>
+              <p className='font-semibold text-cyan-50'>{school.name}</p>
+              <p className='font-extralight text-cyan-50'>{school.degree}</p>
+              <p className='font-extralight text-cyan-50'>{school.graduation}</p>
             </ListItemText>
           </ListItem>
         </List>
@@ -264,7 +264,7 @@ function Schools() {
 function Education() {
   return (
     <div id='education' className='bg-cyan-900 bg-opacity-30 rounded-lg mt-2 mb-10 flex'>
-      <div id='schools-container' className='self-center p-4' style={{ width: '350px', margin: '0 auto' }}>
+      <div id='schools-container' className='self-center' style={{ width: '350px', margin: '0 auto' }}>
         <Schools></Schools>
       </div>
     </div>
@@ -274,40 +274,26 @@ function Education() {
 function Skills() {
   return (
     <div id='skills' className='bg-cyan-900 bg-opacity-30 rounded-lg flex mt-2 mb-10 text-cyan-50'>
-      <div className='flex gap-10 p-2'>
-        <div className='logo-container'>
-          <List dense={true}>
-            <ListItem>
-              <ListItemText>
-                <p>
-                  Languages:
-                </p>
-                <p>
-                  Frameworks:
-                </p>
-                <p>
-                  Misc:
-                </p>
-              </ListItemText>
-            </ListItem>
-          </List>
-        </div>
-        <div className='flex 1'>
-          <List dense={true}>
-            <ListItem>
-              <ListItemText>
-                <p className='font-light'>
-                  JavaScript/Typescript, Java
-                </p>
-                <p className='font-light'>
-                  Angular, React, Spring Boot
-                </p>
-                <p className='font-light'>
-                  Linux, SQL, Node.js, Webpack, GitLab CI/CD, Azure DevOps, Blender, Lightroom, Photoshop
-                </p>
-              </ListItemText>
-            </ListItem>
-          </List>
+      <div className='p-5'>
+        <div className='grid grid-cols-3 gap-1'>
+          <div className='col-span-1'>
+            Languages:
+          </div>
+          <div className='col-span-2 font-extralight'>
+            JavaScript/Typescript, Java
+          </div>
+          <div className='col-span-1'>
+            Frameworks:
+          </div>
+          <div className='col-span-2 font-extralight'>
+            Angular, React, Spring Boot
+          </div>
+          <div className='col-span-1'>
+            Misc:
+          </div>
+          <div className='col-span-2 font-extralight'>
+            Linux, SQL, Node.js, Webpack, GitLab CI/CD, Azure DevOps, Blender, Lightroom, Photoshop
+          </div>
         </div>
       </div>
     </div>

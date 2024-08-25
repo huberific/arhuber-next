@@ -45,6 +45,11 @@
     max-width: 80px;
 }
 
+.sm-logo-container {
+    min-width: 100px;
+    max-width: 100px;
+}
+
 .main-container {
     margin-left: 10%;
     width: 80%;
