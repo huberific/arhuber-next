@@ -55,6 +55,11 @@
     width: 80%;
 }
 
+.sm-main-container {
+    margin-left: 5%;
+    width: 90%;
+}
+
 .inner-container {
     width: 90%;
     padding: 8px;

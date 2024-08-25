@@ -275,7 +275,7 @@ function Skills() {
   return (
     <div id='skills' className='bg-cyan-900 bg-opacity-30 rounded-lg flex mt-2 mb-10 text-cyan-50'>
       <div className='p-5'>
-        <div className='grid grid-cols-3 gap-1'>
+        <div className='grid grid-cols-3 gap-2 text-sm'>
           <div className='col-span-1'>
             Languages:
           </div>
@@ -292,7 +292,7 @@ function Skills() {
             Misc:
           </div>
           <div className='col-span-2 font-extralight'>
-            Linux, SQL, Node.js, Webpack, GitLab CI/CD, Azure DevOps, Blender, Lightroom, Photoshop
+            Linux, SQL, Node.js, Webpack, GitLab CI/CD, Google Material, Tailwind, Azure DevOps, Blender, Lightroom, Photoshop
           </div>
         </div>
       </div>
@@ -309,7 +309,7 @@ function PageSpacer() {
 export default function SmallResume() {
   return (
     <>
-      <div className='main-container mb-30'>
+      <div className='sm-main-container mb-30'>
         <Intro />
         <div className='mt-10'>
           <p className='font-extralight text-cyan-50'>Work History</p>
