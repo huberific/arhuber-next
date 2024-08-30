@@ -2,107 +2,107 @@
 @tailwind utilities;
 
 @layer components {
-    body {
-        @apply bg-slate-800;
-    }
+  body {
+    @apply bg-slate-800;
+  }
 }
 
 #page-container {
-    min-width: 375px;
-    width: 70%;
-    max-width: 1024px;
-    margin-left: calc((100vw - width) / 2);
-    margin-top: 30px;
+  min-width: 375px;
+  width: 70%;
+  max-width: 1024px;
+  margin-left: calc((100vw - width) / 2);
+  margin-top: 30px;
 }
 
 #profile-pic {
-    border-radius: 20px;
+  border-radius: 20px;
 }
 
 #pdf-logo {
-    height: 25px; 
+  height: 25px;
 }
 
 .small-sc-font-100 {
-    @apply text-cyan-100
+  @apply text-cyan-100
 }
 
 .small-sc-font-200 {
-    @apply text-cyan-200
+  @apply text-cyan-200
 }
 
 .small-sc-font-300 {
-    @apply text-cyan-300
+  @apply text-cyan-300
 }
 
 .top-work-bar {
-    border-top-right-radius: 0.5rem;
-    border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  border-top-left-radius: 0.5rem;
 }
 
 .logo-container {
-    min-width: 80px;
-    max-width: 80px;
+  min-width: 80px;
+  max-width: 80px;
 }
 
 .sm-logo-container {
-    min-width: 100px;
-    max-width: 100px;
+  min-width: 100px;
+  max-width: 100px;
 }
 
 .main-container {
-    margin-left: 10%;
-    width: 80%;
+  margin-left: 10%;
+  width: 80%;
 }
 
 .sm-main-container {
-    margin-left: 5%;
-    width: 90%;
+  margin-left: 5%;
+  width: 90%;
 }
 
 .inner-container {
-    width: 90%;
-    padding: 8px;
+  width: 90%;
+  padding: 8px;
 }
 
 .school-container {
-    width: 90%;
-    padding: 0px;
+  width: 90%;
+  padding: 0px;
 }
 
 .download-container {
-    width: 30px;
-    justify-self: flex-end;
+  width: 30px;
+  justify-self: flex-end;
 }
 
 #pdf-logo:hover {
-    color: darkred;
+  color: darkred;
 }
 
 #back-logo:hover {
-    color: #008080;
+  color: #008080;
 }
 
 #mail-logo:hover {
-    fill: #958049;
+  fill: #958049;
 }
 
 .sm-sc-logo {
-    fill: #ecfeff;
+  fill: #ecfeff;
 }
 
 #linkedin-logo:hover {
-    fill: #0072b1;
+  fill: #0072b1;
 }
 
 #github-logo:hover {
-    fill: #6e5494;
+  fill: #6e5494;
 }
 
 .follow-logo {
-    fill: #696969;
+  fill: #696969;
 }
 
 .follow-logo:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
