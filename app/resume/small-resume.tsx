@@ -60,7 +60,7 @@ function Intro() {
           Redwood City, CA
         </p>
         <div className='flex gap-5'>
-          <Tooltip title='Email me' placement='bottom' enterDelay={1000}>
+          <Tooltip title='arhuber@stanford.edu' placement='bottom' enterDelay={1000}>
             <Link href={'mailto:arhuber@stanford.edu'}>
               <div>
                 <SvgIcon>
