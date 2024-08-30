@@ -6,7 +6,7 @@ import { Intro } from './home/intro';
 
 export default function LandingPage() {
   return (
-    <div className='page-container'>
+    <div className='page-container dark:bg-slate-800'>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

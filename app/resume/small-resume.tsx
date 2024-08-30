@@ -6,28 +6,8 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image'
 import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
-import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 
 import './styles.css'
-
-function BackArrow() {
-  return (
-    <div className='p-10 flex' style={{ width: '50%' }}>
-      <Link href={'/home'}>
-        <div>
-          <motion.div
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.90 }}
-          >
-            <Tooltip title='Home' placement='bottom' enterDelay={1000}>
-              <KeyboardBackspaceIcon id='back-logo' fontSize='large' sx={{ color: '#696969' }} />
-            </Tooltip>
-          </motion.div>
-        </div>
-      </Link>
-    </div>
-  )
-}
 
 function DownloadResume() {
   return (
@@ -53,10 +33,10 @@ function Intro() {
         alt='Picture of Aaron'
       />
       <div className='flex flex-col gap-1 items-center'>
-        <p className='text-lg font-medium small-sc-font-300'>
+        <p className='text-lg font-medium dark:text-cyan-300'>
           Aaron Huber
         </p>
-        <p className='font-light mb-2 small-sc-font-100'>
+        <p className='font-light mb-2 dark:text-cyan-100'>
           Redwood City, CA
         </p>
         <div className='flex gap-5'>
@@ -114,13 +94,13 @@ function BoeingLogoContainer() {
 function Work() {
   return (
     <div>
-      <div className='mt-2 bg-cyan-700 bg-opacity-10 rounded-lg'>
-        <div className='flex p-2 justify-between bg-cyan-900 bg-opacity-30 top-work-bar'>
+      <div className='mt-2 dark:bg-cyan-700/10 rounded-lg'>
+        <div className='flex p-2 justify-between dark:bg-cyan-900/30 top-work-bar'>
           <BoeingLogoContainer />
           <div>
             <List dense={false}>
               <ListItem>
-                <ListItemText className='font-lite text-cyan-50'>
+                <ListItemText className='font-lite dark:text-cyan-50'>
                   <p>
                     Full Stack Developer
                   </p>
@@ -135,7 +115,7 @@ function Work() {
             </List>
           </div>
         </div>
-        <div className='text-cyan-50 p-2'>
+        <div className='dark:text-cyan-50 p-2'>
           <List dense={false}>
             <ListItem>
               <ListItemText className='font-light text-justify'>
@@ -177,13 +157,13 @@ function Work() {
           </List>
         </div>
       </div>
-      <div className='mt-5 bg-cyan-700 bg-opacity-10 rounded-lg'>
-        <div className='flex p-2 justify-between bg-cyan-900 bg-opacity-30 top-work-bar'>
+      <div className='mt-5 dark:bg-cyan-700/10 rounded-lg'>
+        <div className='flex p-2 justify-between dark:bg-cyan-900/30 top-work-bar'>
           <BoeingLogoContainer />
           <div>
             <List dense={false}>
               <ListItem>
-                <ListItemText className='font-lite text-cyan-50'>
+                <ListItemText className='font-lite dark:text-cyan-50'>
                   <p>
                     Mechanical Engineer
                   </p>
@@ -199,7 +179,7 @@ function Work() {
           </div>
         </div>
         <div className='p-2'>
-          <div className='text-cyan-50'>
+          <div className='dark:text-cyan-50'>
             <List dense={false}>
               <ListItem>
                 <ListItemText className='font-light text-justify'>
@@ -249,9 +229,9 @@ function Schools() {
         <List dense={false}>
           <ListItem>
             <ListItemText>
-              <p className='font-semibold text-cyan-50'>{school.name}</p>
-              <p className='font-extralight text-cyan-50'>{school.degree}</p>
-              <p className='font-extralight text-cyan-50'>{school.graduation}</p>
+              <p className='font-semibold dark:text-cyan-50'>{school.name}</p>
+              <p className='font-extralight dark:text-cyan-50'>{school.degree}</p>
+              <p className='font-extralight dark:text-cyan-50'>{school.graduation}</p>
             </ListItemText>
           </ListItem>
         </List>
@@ -263,7 +243,7 @@ function Schools() {
 
 function Education() {
   return (
-    <div id='education' className='bg-cyan-900 bg-opacity-30 rounded-lg mt-2 mb-10 flex'>
+    <div id='education' className='dark:bg-cyan-900/30 rounded-lg mt-2 mb-10 flex'>
       <div id='schools-container' className='self-center' style={{ width: '350px', margin: '0 auto' }}>
         <Schools></Schools>
       </div>
@@ -273,7 +253,7 @@ function Education() {
 
 function Skills() {
   return (
-    <div id='skills' className='bg-cyan-900 bg-opacity-30 rounded-lg flex mt-2 mb-10 text-cyan-50'>
+    <div id='skills' className='dark:bg-cyan-900/30 dark:text-cyan-50 rounded-lg flex mt-2 mb-10 '>
       <div className='p-5'>
         <div className='grid grid-cols-3 gap-2 text-sm'>
           <div className='col-span-1'>
@@ -300,23 +280,17 @@ function Skills() {
   )
 }
 
-function PageSpacer() {
-  return (
-    <div className='p-10'></div>
-  )
-}
-
 export default function SmallResume() {
   return (
     <>
       <div className='sm-main-container mb-30'>
         <Intro />
         <div className='mt-10'>
-          <p className='font-extralight text-cyan-50'>Work History</p>
+          <p className='font-extralight dark:text-cyan-50'>Work History</p>
           <Work />
-          <p className='font-extralight text-cyan-50 mt-10'>Education</p>
+          <p className='font-extralight dark:text-cyan-50 mt-10'>Education</p>
           <Education />
-          <p className='font-extralight text-cyan-50 mt-10'>Skills</p>
+          <p className='font-extralight dark:text-cyan-50 mt-10'>Skills</p>
           <Skills />
         </div>
 
