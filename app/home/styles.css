@@ -1,3 +1,15 @@
+@tailwind base;
+
+#my-experience:hover {
+  color: theme('colors.cyan.950')
+}
+
+@media (prefers-color-scheme: dark) {
+  #my-experience:hover {
+    color: theme('colors.cyan.50')
+  }
+}
+
 .page-container {
   width: 100vw;
   height: 100vh;

@@ -1,6 +1,6 @@
 'use client'
 
-import { Divider, List, ListItem, ListItemText, Paper, SvgIcon, Tooltip } from '@mui/material'
+import { List, ListItem, ListItemText, Paper, SvgIcon, Tooltip } from '@mui/material'
 import { educationList } from './data';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
@@ -8,45 +8,26 @@ import Image from 'next/image'
 import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 
 import './styles.css'
-import SmallResume from './small-resume';
-
-function DownloadResume() {
-  return (
-    <div className='p-10' style={{ width: '50%' }}>
-      <div key='download' className='follow-logo flex justify-end'>
-        <motion.div
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.90 }}
-        >
-          <a href={'/AaronHuberResume.pdf'} download={'AaronHuberResume'}>
-            <Tooltip title='Download resume' placement='bottom' enterDelay={1000}>
-              <PictureAsPdfIcon id='pdf-logo' fontSize='large' sx={{ color: '#696969' }} />
-            </Tooltip>
-          </a>
-        </motion.div>
-      </div>
-    </div>
-  )
-}
 
 function Intro() {
   return (
     <div id='profile-container' className='main-container mb-10 flex flex-row gap-10 justify-center'>
       <Image
-        className='rounded-lg content-center'
+        id='profile-pic'
+        className='rounded-lg content-center shadow-md'
         src='/ARH_2295_sml.png'
         width={300}
         height={300}
         alt='Picture of Aaron'
       />
-      <div className='flex-col content-center'>
+      <div className='flex-col content-center text-cyan-950 dark:text-cyan-50'>
         <p className='text-lg font-medium'>
           Aaron Huber
         </p>
         <p className='text-base font-light mb-2'>
           Redwood City, CA
         </p>
-        <div className='flex gap-5'>
+        <div className='flex gap-7'>
           <Tooltip title='arhuber@stanford.edu'>
             <motion.div
               key='email'
@@ -89,7 +70,7 @@ function Intro() {
                 className='follow-logo'
               >
                 <a href={'/AaronHuberResume.pdf'} download={'AaronHuberResume'}>
-                  <PictureAsPdfIcon id='pdf-logo' fontSize='large' sx={{ color: '#696969' }} />
+                  <PictureAsPdfIcon id='pdf-logo' className='follow-logo' fontSize='large' sx={{ color: '#696969' }} />
                 </a>
               </motion.div>
           </Tooltip>
@@ -101,13 +82,21 @@ function Intro() {
 
 function BoeingLogoContainer() {
   return (
-    <motion.div className='logo-container self-center'
+    <motion.div className='left-container self-center'
       key='boeing'
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.90 }}>
       <Link href={'https://www.boeing.com'}>
         <Image
+          className='block dark:hidden'
           src='/boeing_logo.svg'
+          width={110}
+          height={110}
+          alt='Boeing logo'
+        />
+        <Image
+          className='hidden dark:block'
+          src='/boeing_logo_white.svg'
           width={110}
           height={110}
           alt='Boeing logo'
@@ -120,14 +109,14 @@ function BoeingLogoContainer() {
 function Work() {
   return (
     <div id='work' className='main-container flex justify-center'>
-      <div className='flex-col inner-container'>
-        <div className='flex gap-5'>
+      <div className='flex-col inner-container text-cyan-950 dark:text-cyan-50'>
+        <div className='flex gap-7'>
           <BoeingLogoContainer />
           <div className='flex-col flex 1'>
             <List dense={false}>
               <ListItem>
                 <ListItemText>
-                  <p>
+                  <p className='font-semibold'>
                     Software Development Engineer
                   </p>
                   <p className='font-light'>
@@ -142,7 +131,7 @@ function Work() {
                 <ListItemText className='font-light'>
                   <span className='font-light'>
                     Upgraded a suite of airplane maintenance web applications (Angular, Java Spring Boot) from
-                    deprecated AngularJS to Angular v15+ resulting in increased performance and scalability
+                    deprecated AngularJS to Angular v17+ resulting in increased performance and scalability
                   </span>
                 </ListItemText>
               </ListItem>
@@ -176,16 +165,16 @@ function Work() {
                 </ListItemText>
               </ListItem>
             </List>
-            <Divider />
+          <ResumeDivider size='small'/>
           </div>
         </div>
-        <div className='flex gap-5'>
+        <div className='flex gap-7'>
           <BoeingLogoContainer />
           <div className='flex-col flex 1'>
             <List dense={false}>
               <ListItem>
                 <ListItemText>
-                  <p>
+                  <p className='font-semibold'>
                     Mechanical Engineer
                   </p>
                   <p className='font-light'>
@@ -222,14 +211,22 @@ function Work() {
 
 function Schools() {
   const schoolList = educationList.map(school =>
-    <div className='flex gap-5 content-center' key={school.id}>
-      <motion.div className='flex logo-container justify-center self-center'
+    <div className='flex gap-7 content-center' key={school.id}>
+      <motion.div className='flex left-container justify-center self-center'
         key={school.name}
         whileHover={{ scale: 1.2, rotate: 360 }}
         whileTap={{ scale: 0.90 }}>
         <Link href={school.site}>
           <Image
+            className='block dark:hidden'
             src={school.logoDetails.src}
+            width={school.logoDetails.width}
+            height={school.logoDetails.height}
+            alt={school.logoDetails.alt}
+          />
+          <Image
+            className='hidden dark:block'
+            src={school.logoDetails.src_dark}
             width={school.logoDetails.width}
             height={school.logoDetails.height}
             alt={school.logoDetails.alt}
@@ -240,7 +237,7 @@ function Schools() {
         <List dense={false}>
           <ListItem>
             <ListItemText>
-              <p>{school.name}</p>
+              <p className='font-semibold'>{school.name}</p>
               <p className='font-light'>{school.degree}</p>
               <p className='font-light'>{school.graduation}</p>
             </ListItemText>
@@ -266,19 +263,19 @@ function Skills() {
   return (
     <div id='skills' className='main-container flex justify-center'>
       <div className='flex flex-col inner-container'>
-        <div className='flex gap-5'>
-          <div className='logo-container flex-col'>
+        <div className='flex gap-7'>
+          <div className='left-container flex-col'>
             <List>
               <ListItem>
                 <ListItemText>
-                  <p className='font-light'>
-                    Languages
+                  <p className='font-semibold'>
+                    Languages:
                   </p>
-                  <p className='font-light'>
-                    Frameworks
+                  <p className='font-semibold'>
+                    Frameworks:
                   </p>
-                  <p className='font-light'>
-                    Misc.
+                  <p className='font-semibold'>
+                    Misc:
                   </p>
                 </ListItemText>
               </ListItem>
@@ -289,13 +286,13 @@ function Skills() {
               <ListItem>
                 <ListItemText>
                   <p className='font-light'>
-                    JavaScript/Typescript, Java, C/C++
+                    JavaScript/TypeScript, Java, C/C++
                   </p>
                   <p className='font-light'>
                     Angular, React, Spring Boot
                   </p>
                   <p className='font-light'>
-                    Linux, SQL, Node.js, Webpack, GitLab CI/CD, Azure DevOps, Lightroom, Photoshop
+                    Linux, SQL, Node.js, Webpack, GitLab CI/CD, Google Material, Tailwind, Azure DevOps, Blender, Lightroom, Photoshop
                   </p>
                 </ListItemText>
               </ListItem>
@@ -313,6 +310,13 @@ function PageSpacer() {
   )
 }
 
+function ResumeDivider({size}: {size?: string}) {
+  return size == 'small' ? (
+    <div className='sm-resume-divider bg-cyan-950/20 dark:bg-cyan-100/20 mt-3 mb-3'></div>
+  ) : (
+    <div className='resume-divider bg-cyan-950/20 dark:bg-cyan-100/20'></div>
+  )
+}
 
 export default function LargeResume() {
   return (
@@ -321,21 +325,15 @@ export default function LargeResume() {
       animate={{ opacity: 1 }}
       transition={{ delay: 0.2, duration: 1.5 }}
     >
-      <Paper elevation={3} sx={{ bgcolor: '#f5f5f5' }}>
+      <Paper elevation={3} className='bg-slate-100 dark:bg-cyan-700/10'>
         <PageSpacer />
         <Intro />
-        <div id='resume-container' className='mb-40'>
-          <div className='divider mb-5'>
-            <Divider textAlign='center'>WORK HISTORY</Divider>
-          </div>
+        <div id='resume-container' className='mb-40 text-cyan-950 dark:text-cyan-50'>
+          <ResumeDivider />
           <Work />
-          <div className='divider mb-5'>
-            <Divider textAlign='center'>EDUCATION</Divider>
-          </div>
+          <ResumeDivider />
           <Education />
-          <div className='divider mb-5'>
-            <Divider textAlign='center'>SKILLS</Divider>
-          </div>
+          <ResumeDivider />
           <Skills />
           <PageSpacer />
         </div>

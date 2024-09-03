@@ -7,8 +7,8 @@ import Link from 'next/link';
 import { useRef } from 'react';
 import { useInView } from 'framer-motion';
 import { usePathname } from 'next/navigation';
-import {Stack} from '@mui/material';
-import {Breadcrumbs} from '@mui/material';
+import { Stack } from '@mui/material';
+import { Breadcrumbs } from '@mui/material';
 
 
 function Dividers({ type }: { type: string }) {
@@ -56,24 +56,20 @@ export default function Navbar() {
   const isInView = useInView(ref);
   const paths = usePathname().split('/').filter(e => e !== '');
   const pathName = usePathname().replace('/', '');
+  let keyRef = 'key0';
   const breadcrumbs = [
-    <motion.div key="1"
-      whileHover={{color: '#FFFFFF'}}
-    >
-      <Link href={'/home'}>
+    <Link href={'/home'} key={keyRef}>
+      <div className='font-extralight nav-link'>
         home
-      </Link>
-    </motion.div>,
-    // <div key="2" className='font-extralight'>
-    //   {pathName}
-    // </div>
+      </div>
+    </Link>
   ]
   for (let i = 0; i < paths.length; i++) {
-    const keyRef = i + 1;
+    keyRef = 'key' + (i + 1);
     if (i + 1 < paths.length) {
       breadcrumbs.push(
-        <Link href={'/' + paths[i]}>
-          <div key={keyRef} className='font-extralight'>
+        <Link href={'/' + paths[i]} key={keyRef}>
+          <div className='font-extralight nav-link'>
             {paths[i]}
           </div>
         </Link>
@@ -97,6 +93,7 @@ export default function Navbar() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1, delay: 1.6 }}
+                className='font-extralight text-cyan-950 dark:text-cyan-100'
               >arhuber.dev</motion.h1>
             </div>
             <Dividers type='animated' />
@@ -104,19 +101,23 @@ export default function Navbar() {
         </Link>
       </div>
       <AnimatePresence>
-        {!isInView && !pathName.includes('home') && 
+        {!isInView && !pathName.includes('home') &&
           <motion.div
             initial={{ y: '-50px' }}
             animate={{ y: 0 }}
             exit={{ y: '-50px' }}
             transition={{ duration: 0.2 }}
-            className='bg-slate-700/80 backdrop-blur breadcrumbs-container flex items-center justify-center'
+            className='dark:bg-slate-700/50 bg-slate-300/20 backdrop-blur breadcrumbs-container flex items-center justify-center'
           >
             <div className='grid grid-cols-3 breadcrumbs'>
-              <span className='col-span-1 self-start text-cyan-700'>arhuber.dev</span>
+              <span className='col-span-1 self-start text-cyan-800 dark:text-cyan-300 nav-arhuber'>
+                <Link href={'/home'}>
+                  arhuber.dev
+                </Link>
+              </span>
               <span className='col-span-1'></span>
               <Stack spacing={2} className='col-span-1 items-end'>
-                <Breadcrumbs separator='/' className='text-slate-400'>
+                <Breadcrumbs separator='/' className='text-cyan-950 dark:text-cyan-50' >
                   {breadcrumbs}
                 </Breadcrumbs>
               </Stack>

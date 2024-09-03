@@ -1,11 +1,6 @@
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@layer components {
-  body {
-    @apply bg-slate-800;
-  }
-}
 
 #page-container {
   min-width: 375px;
@@ -15,6 +10,19 @@
   margin-top: 30px;
 }
 
+.resume-divider {
+	width: 80%;
+	margin-right: 10%;
+	margin-left: 10%;
+	height: 1px;
+}
+
+.sm-resume-divider {
+	width: 100%;
+	height: 1px;
+}
+
+
 #profile-pic {
   border-radius: 20px;
 }
@@ -23,26 +31,14 @@
   height: 25px;
 }
 
-.small-sc-font-100 {
-  @apply text-cyan-100
-}
-
-.small-sc-font-200 {
-  @apply text-cyan-200
-}
-
-.small-sc-font-300 {
-  @apply text-cyan-300
-}
-
 .top-work-bar {
   border-top-right-radius: 0.5rem;
   border-top-left-radius: 0.5rem;
 }
 
-.logo-container {
-  min-width: 80px;
-  max-width: 80px;
+.left-container {
+  min-width: 100px;
+  max-width: 100px;
 }
 
 .sm-logo-container {
@@ -76,7 +72,7 @@
 }
 
 #pdf-logo:hover {
-  color: darkred;
+  fill: darkred;
 }
 
 #back-logo:hover {
@@ -87,10 +83,6 @@
   fill: #958049;
 }
 
-.sm-sc-logo {
-  fill: #ecfeff;
-}
-
 #linkedin-logo:hover {
   fill: #0072b1;
 }
@@ -99,10 +91,16 @@
   fill: #6e5494;
 }
 
-.follow-logo {
-  fill: #696969;
-}
-
 .follow-logo:hover {
   cursor: pointer;
+}
+
+.follow-logo {
+  fill: theme('colors.cyan.950');
+}
+
+@media (prefers-color-scheme: dark) {
+  .follow-logo {
+    fill: theme('colors.cyan.50');
+  }
 }

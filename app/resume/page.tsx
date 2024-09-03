@@ -7,7 +7,7 @@ import LargeResume from './large-resume';
 export default function Resume() {
   return (
     <>
-      <div className='md:hidden'>
+      <div className='block md:hidden'>
         <SmallResume />
       </div>
       <div className='hidden md:block'>
