@@ -1,0 +1,41 @@
+@tailwind base;
+
+#my-experience:hover {
+  color: theme('colors.cyan.950')
+}
+
+@media (prefers-color-scheme: dark) {
+  #my-experience:hover {
+    color: theme('colors.cyan.50')
+  }
+}
+
+.page-container {
+  width: 100vw;
+  height: 100vh;
+  max-width: 1600px;
+  margin-left: calc((100vw - min(100vw, 1600px)) / 2);
+}
+
+#intro-container {
+  width: 40%;
+  margin-left: 12%;
+}
+
+#img-container {
+  width: 38%;
+  margin-right: 12%;
+}
+
+#hello-text {
+  font-size: min(3.5vw, 30px);
+}
+
+.page-text {
+  font-size: min(3vw, 30px);
+}
+
+#resume-link-container {
+  width: 76%;
+  margin-left: 12%;
+}
