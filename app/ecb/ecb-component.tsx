@@ -4,7 +4,8 @@ import './ecb-styles.css';
 import { useRef, useState, useEffect } from 'react';
 import { Canvas, useFrame, useLoader } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
-import { GLTFLoader } from 'three/examples/jsm/Addons.js';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+
 import { Mesh } from 'three';
 
 function MeshComponent() {
@@ -49,7 +50,7 @@ function MeshComponent() {
 }
 
 
-export function ECB() {
+export default function ECBComponent() {
   console.log(MeshComponent());
   return (
     <div className='scene'>

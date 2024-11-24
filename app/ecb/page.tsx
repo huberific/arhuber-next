@@ -1,8 +1,10 @@
 'use client'
 
-import { ECB } from './ecb';
+import dynamic from 'next/dynamic';
 import './styles.css'
 import { motion } from 'framer-motion';
+const ECBWithNoSSR = dynamic(() => import('./ecb-component'), { ssr: false });
+
 
 export default function Home() {
   return (
@@ -12,7 +14,7 @@ export default function Home() {
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 0 }}
       >
-        <ECB/>
+        <ECBWithNoSSR/>
       </motion.div>
     </div>
   )
