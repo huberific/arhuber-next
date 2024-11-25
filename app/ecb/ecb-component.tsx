@@ -1,17 +1,14 @@
 'use client';
-import './ecb-styles.css';
 
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import ECBPart from './ecb-part';
+import { fileNames } from './ecb-filenames';
+import './styles.css'
 
 export default function ECBComponent() {
   const path = '/ecb-components/';
-  const fileUrls = [
-    "ecb_board.gltf",
-    "cyl_chip_1.gltf",
-    "cyl_chip_2.gltf",
-  ];
+  const fileExt = '.gltf'
   const timer = Date.now();
 
   const handleMeshClick = (index: number, isVisible: boolean) => {
@@ -27,14 +24,14 @@ export default function ECBComponent() {
         <pointLight intensity={0.25} position={[0, 0.4, 0]} />
         <pointLight position={[0, 0.15, 0.4]} />
 
-        {fileUrls.map((fileUrl, index) => (
+        {fileNames.map((fileName, index) => (
           <ECBPart key={index}
-            fileUrl={path + fileUrl}
+            fileUrl={path + fileName + fileExt}
             onClick={(isVisible) => handleMeshClick(index, isVisible)}/>
         ))}
 
-        <axesHelper/>
-        <OrbitControls />
+        {/* <axesHelper/> */}
+        {/* <OrbitControls enableRotate={false} maxZoom={10} /> */}
       </Canvas>
     </div>
   )

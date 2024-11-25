@@ -1,6 +1,13 @@
 .scene {
-  width: 100vw;
-  height: 100vh;
+  background-color: teal;
+}
+
+#canvas {
+  min-width: 375px;
+  width: 70%;
+  max-width: 1024px;
+  margin-left: calc((100vw - width) / 2);
+  margin-top: 30px;
 }
 
 .canvas {

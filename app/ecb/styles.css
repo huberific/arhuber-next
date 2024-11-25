@@ -39,3 +39,10 @@
   width: 76%;
   margin-left: 12%;
 }
+
+.scene {
+  margin-top: 30px;
+  margin-left: 5%;
+  width: 90%;
+  height: 120vh;
+}
