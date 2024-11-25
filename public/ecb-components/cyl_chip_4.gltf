@@ -20,7 +20,7 @@
     "nodes" : [
         {
             "mesh" : 0,
-            "name" : "leg",
+            "name" : "leg.004",
             "rotation" : [
                 0.7071068286895752,
                 0,
@@ -33,14 +33,14 @@
                 1.2661560773849487
             ],
             "translation" : [
-                0.0013665705919265747,
+                0.0013665780425071716,
                 -0.009663296863436699,
-                -0.023477228358387947
+                -0.0234772190451622
             ]
         },
         {
             "mesh" : 1,
-            "name" : "leg.001",
+            "name" : "leg.005",
             "rotation" : [
                 0.7071068286895752,
                 0,
@@ -53,7 +53,7 @@
                 1.2661560773849487
             ],
             "translation" : [
-                0.0013665705919265747,
+                0.0013665780425071716,
                 -0.009663296863436699,
                 -0.038972027599811554
             ]
@@ -64,37 +64,37 @@
                 1
             ],
             "mesh" : 2,
-            "name" : "cyl_chip_1",
+            "name" : "cyl_chip_4",
             "scale" : [
                 1,
                 0.7897920608520508,
                 1
             ],
             "translation" : [
-                -0.09991714358329773,
+                0.02115461602807045,
                 0.022600430995225906,
-                0.029136355966329575
+                -0.026736175641417503
             ]
         },
         {
             "mesh" : 3,
-            "name" : "cyl_chip_1_plane",
+            "name" : "cyl_chip_4_plane",
             "scale" : [
                 0.6974747180938721,
                 0.00800000037997961,
                 0.6017695665359497
             ],
             "translation" : [
-                -0.09869476407766342,
+                0.0219353586435318,
                 0.002031999872997403,
-                0.023864401504397392
+                -0.031560253351926804
             ]
         }
     ],
     "materials" : [
         {
             "doubleSided" : true,
-            "name" : "Material.003",
+            "name" : "Material.031",
             "pbrMetallicRoughness" : {
                 "baseColorFactor" : [
                     0.6257959604263306,
@@ -108,7 +108,7 @@
         },
         {
             "doubleSided" : true,
-            "name" : "Material.022",
+            "name" : "Material.033",
             "pbrMetallicRoughness" : {
                 "baseColorFactor" : [
                     0.6257959604263306,
@@ -163,7 +163,7 @@
     ],
     "meshes" : [
         {
-            "name" : "Cylinder.013",
+            "name" : "Cylinder.030",
             "primitives" : [
                 {
                     "attributes" : {
@@ -186,7 +186,7 @@
             ]
         },
         {
-            "name" : "Cylinder.017",
+            "name" : "Cylinder.032",
             "primitives" : [
                 {
                     "attributes" : {
@@ -209,7 +209,7 @@
             ]
         },
         {
-            "name" : "Cylinder.016",
+            "name" : "Cylinder.031",
             "primitives" : [
                 {
                     "attributes" : {
@@ -232,7 +232,7 @@
             ]
         },
         {
-            "name" : "Cylinder",
+            "name" : "Cylinder.069",
             "primitives" : [
                 {
                     "attributes" : {
