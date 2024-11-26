@@ -42,7 +42,16 @@
 
 .scene {
   margin-top: 30px;
-  margin-left: 5%;
-  width: 90%;
-  height: 120vh;
+  margin-left: 5vw;
+  width: 90vw;
+  height: 60vw;
+}
+
+.text-container {
+  width: 80%;
+  margin-left: 10%;
+}
+
+#title {
+  font-size: min(3.5vw, 30px);
 }

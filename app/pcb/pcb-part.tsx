@@ -11,7 +11,7 @@ interface GLTFComponentProps {
 	onClick?: (isVisible: boolean) => void;
 }
 
-export default function ECBPart({ fileUrl, onClick }: GLTFComponentProps) {
+export default function PCBPart({ fileUrl, onClick }: GLTFComponentProps) {
 	const mesh = useRef<Mesh>(null);
 	const [isVisible, setIsVisible] = useState(false); // Track visible state
 	let isListenForClickEvents = true;

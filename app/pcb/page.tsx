@@ -3,18 +3,24 @@
 import dynamic from 'next/dynamic';
 import './styles.css'
 import { motion } from 'framer-motion';
-const ECBWithNoSSR = dynamic(() => import('./ecb-component'), { ssr: false });
+const PCBWithNoSSR = dynamic(() => import('./pcb-component'), { ssr: false });
 
 
 export default function Home() {
   return (
     <div className='page-container'>
+      <div className='text-container'>
+        <h1 id="title">
+          Circuit Board Quality Test
+        </h1>
+
+      </div>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 0 }}
       >
-        <ECBWithNoSSR/>
+        <PCBWithNoSSR/>
       </motion.div>
     </div>
   )

@@ -2,11 +2,11 @@
 
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
-import ECBPart from './ecb-part';
-import { fileNames } from './ecb-filenames';
+import PCBPart from './pcb-part';
+import { fileNames } from './pcb-filenames';
 import './styles.css'
 
-export default function ECBComponent() {
+export default function PCBComponent() {
   const path = '/ecb-components/';
   const fileExt = '.gltf'
   const timer = Date.now();
@@ -25,7 +25,7 @@ export default function ECBComponent() {
         <pointLight position={[0, 0.15, 0.4]} />
 
         {fileNames.map((fileName, index) => (
-          <ECBPart key={index}
+          <PCBPart key={index}
             fileUrl={path + fileName + fileExt}
             onClick={(isVisible) => handleMeshClick(index, isVisible)}/>
         ))}
