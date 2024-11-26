@@ -16,7 +16,7 @@ export function Intro() {
           </p>
           <p className='page-text font-extralight text-cyan-900 dark:text-cyan-50 mt-2'>
             I&apos;m a full stack software engineer at Boeing and a graduate student in the Honors Cooperative Program
-            at Stanford pursuing a Masters in Computer Science. I have interests in Artificial Intelligence, Information Management, and
+            at Stanford pursuing a Masters in Computer Science. I have interests in Artificial Intelligence, Graphics, and
             solving challenging problems.
           </p>
         </div>
