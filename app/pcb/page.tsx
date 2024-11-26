@@ -16,7 +16,7 @@ export default function Home() {
       <div className='text-container mt-10 grid'>
         <div className='flex' style={{marginLeft: '38%'}}>
           <div id='img-container' className='flex justify-center'>
-            <Image className='rounded-xl' src='/initech.png' width={width} height={height} alt='Picture of Aaron' />
+            <Image src='/initech.png' width={width} height={height} alt='Picture of Aaron' />
           </div>
         </div>
         <h1 id="title" className='font-normal text-cyan-950 dark:text-cyan-200 text-center mt-5'>
