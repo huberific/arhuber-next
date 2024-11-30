@@ -60,14 +60,52 @@
 }
 
 #title {
-  font-size: min(3.0vw, 25px);
+  font-size: max(3.0vw, 30px);
 }
 
 #initech {
-  font-size: min(4.0vw, 35px);
+  font-size: max(4vw, 35px);
   font-style: italic;
 }
 
 .paragraph {
   font-size: max(1.5vw, 18px);
+}
+
+.begin-button {
+  width: 40vw;
+  height: calc(1 * 40vw / 3);
+  font-size: max(1.5vw, 18px);
+  color: theme('colors.cyan.700');
+  border-color: theme('colors.cyan.700');
+}
+
+.begin-button:hover {
+  color: theme('colors.cyan.800');
+  border-color: theme('colors.cyan.800');
+}
+
+.test-cover {
+  background-color: theme('colors.slate.100');
+}
+
+.game-text {
+  color: theme('colors.cyan.900');
+}
+
+@media (prefers-color-scheme: dark) {
+  .test-cover {
+    background-color: theme('colors.slate.800');
+  }
+  .begin-button {
+    color: theme('colors.cyan.200');
+    border-color: theme('colors.cyan.200');
+  }
+  .begin-button:hover {
+    color: theme('colors.cyan.400');
+    border-color: theme('colors.cyan.400');
+  }
+  .game-text {
+    color: theme('colors.cyan.100');
+  }
 }
