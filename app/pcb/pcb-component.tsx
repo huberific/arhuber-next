@@ -7,7 +7,7 @@ import { fileNames } from './pcb-filenames';
 import './styles.css'
 
 export default function PCBComponent() {
-  const path = '/ecb-components/';
+  const path = '/pcb-components/';
   const fileExt = '.gltf'
   const timer = Date.now();
 
@@ -18,20 +18,16 @@ export default function PCBComponent() {
 
   return (
     <div className='scene'>
-      <Canvas camera={{ position: [0, 0.25, 0.2], fov: 75 }}
+      <Canvas camera={{ position: [0, 0.55, 0.3], fov: 75, zoom: 2.6 }}
       >
         <ambientLight intensity={0.5} />
         <pointLight intensity={0.25} position={[0, 0.4, 0]} />
-        <pointLight position={[0, 0.15, 0.4]} />
-
+        <pointLight position={[0, 0.6, 0.2]} />
         {fileNames.map((fileName, index) => (
           <PCBPart key={index}
             fileUrl={path + fileName + fileExt}
             onClick={(isVisible) => handleMeshClick(index, isVisible)}/>
         ))}
-
-        {/* <axesHelper/> */}
-        {/* <OrbitControls enableRotate={false} maxZoom={10} /> */}
       </Canvas>
     </div>
   )

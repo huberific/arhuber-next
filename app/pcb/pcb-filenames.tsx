@@ -4,7 +4,7 @@ export const fileNames = [
   'cyl_chip_2',
   'cyl_chip_3',
   'cyl_chip_4',
-  'ecb_board',
+  'pcb_board',
   'R1_blue_1',
   'R1_blue_2',
   'R1_tan_1',
