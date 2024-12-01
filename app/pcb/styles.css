@@ -93,6 +93,14 @@
   color: theme('colors.cyan.900');
 }
 
+#line-chart {
+  stroke: theme('colors.cyan.800');
+}
+
+#line-chart * {
+  stroke: theme('colors.cyan.800');
+}
+
 @media (prefers-color-scheme: dark) {
   .test-cover {
     background-color: theme('colors.slate.800');
@@ -107,5 +115,13 @@
   }
   .game-text {
     color: theme('colors.cyan.100');
+  }
+
+  #line-chart {
+    stroke: theme('colors.cyan.200');
+  }
+
+  #line-chart * {
+    stroke: theme('colors.cyan.200');
   }
 }

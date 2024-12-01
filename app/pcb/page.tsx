@@ -8,19 +8,31 @@ import { Button } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { fileNames } from './pcb-filenames';
 const PCBWithNoSSR = dynamic(() => import('./pcb-component'), { ssr: false });
+import { BarChart } from '@mui/x-charts';
+import { axisClasses } from '@mui/x-charts/ChartsAxis';
+
+interface PoissonData {
+  x_data: number[],
+  y_data: number[]
+}
 
 export default function Home() {
   const timerMinutes = 1;
+  const poissonInitialData: PoissonData = {
+    x_data: [],
+    y_data: []
+  };
   const [hideGameOpacity, setHideGameOpacity] = useState(1);
   const [hideGameZIndex, setHideGameZIndex] = useState(1);
   const [timerText, setTimerText] = useState('2:00');
   const [timerRemaining, setTimeRemaining] = useState(timerMinutes * 60 * 1000);
   const [gameStartTime, setGameStartTime] = useState(0);
   const [gameTracker, setGameTracker] = useState(new Map());
+  const [poissonData, setPoissonData] = useState(poissonInitialData);
   const logo_width = Math.min(useWindowSize().width * 0.2, 200);
   const logo_height = Math.min(useWindowSize().width * 0.2, 200);
-  const pcb_ref_width = Math.min(useWindowSize().width * 0.8, 800);
-  const pcb_ref_height = Math.min(useWindowSize().width * 0.8, 800);
+  const pcb_ref_width = Math.min(useWindowSize().width * 0.7, 700);
+  const pcb_ref_height = Math.min(useWindowSize().width * 0.7, 700);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -30,10 +42,11 @@ export default function Home() {
         clearInterval(intervalId)
         setTimerText('0:00');
         getTestResults();
+        setPoissonData(getData(5));
       }
     }, 1000);
     return () => clearInterval(intervalId);
-  });
+  }, [timerRemaining]);
 
   function getTimerText(time_ms: number) {
     setTimeRemaining(timerRemaining - 1000);
@@ -76,6 +89,60 @@ export default function Home() {
     }
   }
 
+  function factorial(n: number) {
+    let result = 1;
+    for (let i = 2; i <= n; i++) {
+      result *= i;
+    }
+    return result;
+  }
+
+  function calculatePMF(lambda: number, x: number) {
+    let p = (Math.pow(lambda, x) * Math.exp(-1 * lambda))/factorial(x);
+    console.log(p);
+    return p;
+  }
+
+  function getData(lambda: number): PoissonData {
+    let x_data = [];
+    let y_data = [];
+    for (let i = 0; i < 100; i++) {
+      let p = calculatePMF(lambda, i);
+      if (p > 0.005) {
+        x_data.push(i);
+        y_data.push(p);
+      }
+    }
+    return {
+      x_data: x_data,
+      y_data: y_data
+    }
+  }
+
+  function BasicLineChart() {
+    const chartSetting = {
+      sx: {
+        [`.${axisClasses.left} .${axisClasses.label}`]: {
+          transform: 'translate(-12px, 0)',
+        },
+      },
+    }
+    return (
+      <div className='grid justify-center mt-20'>
+        <div className='game-text'>RESULTS</div>
+        <BarChart className='mb-0 pb-0'
+          xAxis={[{ scaleType: 'band', data: poissonData.x_data, label: 'number of defects' }]}
+          yAxis={[{ label: 'probability' }]}
+          series={[{ data: poissonData.y_data }]}
+          width={pcb_ref_width}
+          height={pcb_ref_width * 2/3}
+          {...chartSetting}
+        />
+        <div className='game-text flex justify-center'></div>
+      </div>
+    )
+  }
+
   return (
     <div className='page-container'>
       <div className='text-container mt-10 grid'>
@@ -107,8 +174,6 @@ export default function Home() {
       </div>
       <div className='mt-10'>
         {/* TODO: get start of game text on front of image */}
-        {/* TODO: fix colors of resistors */}
-        {/* TODO: get shadows on parts if possible when fixing clors */}
         <div className='test-cover' style={{ position: 'absolute', opacity: hideGameOpacity, width: '100vw', height: '100vh', zIndex: hideGameZIndex, transition: 'opacity 0.5s ease-in' }}>
           <div style={{ position: 'absolute', width: '100vw', height: '50px', top: '200px' }} className='flex justify-center'>
             <Button variant="outlined" className='begin-button'
@@ -131,6 +196,9 @@ export default function Home() {
           <p className='mt-5 text-md flex justify-center'>
             TIME REMAINING:<span className='ml-2'> {timerText} </span>
           </p>
+        </div>
+        <div id='line-chart' className='flex justify-center'>
+          <BasicLineChart />
         </div>
       </div>
     </div>
