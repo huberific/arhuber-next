@@ -6,15 +6,22 @@ import Image from 'next/image';
 import { useWindowSize } from '../use-window-size';
 import { Button } from '@mui/material';
 import { useEffect, useState } from 'react';
+import { fileNames } from './pcb-filenames';
 const PCBWithNoSSR = dynamic(() => import('./pcb-component'), { ssr: false });
 
-
 export default function Home() {
-  const timerMinutes = 2;
+  const timerMinutes = 1;
   const [hideGameOpacity, setHideGameOpacity] = useState(1);
   const [hideGameZIndex, setHideGameZIndex] = useState(1);
   const [timerText, setTimerText] = useState('2:00');
   const [timerRemaining, setTimeRemaining] = useState(timerMinutes * 60 * 1000);
+  const [gameStartTime, setGameStartTime] = useState(0);
+  const [gameTracker, setGameTracker] = useState(new Map());
+  const logo_width = Math.min(useWindowSize().width * 0.2, 200);
+  const logo_height = Math.min(useWindowSize().width * 0.2, 200);
+  const pcb_ref_width = Math.min(useWindowSize().width * 0.8, 800);
+  const pcb_ref_height = Math.min(useWindowSize().width * 0.8, 800);
+
   useEffect(() => {
     const intervalId = setInterval(() => {
       if (timerRemaining - 1000 >= 0) {
@@ -22,6 +29,7 @@ export default function Home() {
       } else {
         clearInterval(intervalId)
         setTimerText('0:00');
+        getTestResults();
       }
     }, 1000);
     return () => clearInterval(intervalId);
@@ -37,14 +45,35 @@ export default function Home() {
     return `${minutes}:${seconds}`
   }
 
-  const logo_width = Math.min(useWindowSize().width * 0.2, 200);
-  const logo_height = Math.min(useWindowSize().width * 0.2, 200);
-  const pcb_ref_width = Math.min(useWindowSize().width * 0.8, 800);
-  const pcb_ref_height = Math.min(useWindowSize().width * 0.8, 800);
-
   function onBeginButtonClick() {
     setHideGameOpacity(0);
     setHideGameZIndex(0);
+    setGameStartTime(Date.now());
+  }
+
+  const handlePartClick = (index: number, isVisible: boolean) => {
+    const gameTracker_temp = gameTracker;
+    const timeStamp = (Date.now() - gameStartTime) / 1000;
+    if (!isVisible) {
+      gameTracker_temp.delete(index);
+    } else {
+      gameTracker_temp.set(index, timeStamp);
+    }
+    setGameTracker(gameTracker_temp);
+    console.log(gameTracker);
+  };
+
+  function getTestResults() {
+    let countCorrect = 0;
+    let countIncorrect = 0;
+    for (const key of gameTracker.keys()) {
+      const idx = Number(key);
+      if (fileNames[idx].includes('defect')) {
+        countCorrect++;
+      } else {
+        countIncorrect++;
+      }
+    }
   }
 
   return (
@@ -93,7 +122,7 @@ export default function Home() {
           <div className='text-sm game-text flex justify-center'>Correct Installation Reference</div>
         </div>
         <div style={{ marginTop: '-70px;' }}>
-          <PCBWithNoSSR />
+          <PCBWithNoSSR onPartClick={handlePartClick} />
         </div>
         <div className='game-text grid justify-center' style={{ opacity: 1 - hideGameOpacity, marginTop: '-70px' }}>
           <p className='text-sm'>

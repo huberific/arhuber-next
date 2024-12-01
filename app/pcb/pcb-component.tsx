@@ -6,14 +6,17 @@ import PCBPart from './pcb-part';
 import { fileNames } from './pcb-filenames';
 import './styles.css'
 
-export default function PCBComponent() {
+export default function PCBComponent({ onPartClick }: any) {
   const path = '/pcb-components/';
   const fileExt = '.gltf'
   const timer = Date.now();
 
   const handleMeshClick = (index: number, isVisible: boolean) => {
     const time = Date.now() - timer;
-    console.log(`Mesh at index ${index} isVisible: ${isVisible}. Timestamp: ${time} ms`);
+    // console.log(`Mesh at index ${index} isVisible: ${isVisible}. Timestamp: ${time} ms`);
+    if (onPartClick) {
+      onPartClick(index, isVisible, time);
+    }
   }
 
   return (
