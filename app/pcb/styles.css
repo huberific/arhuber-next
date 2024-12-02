@@ -93,12 +93,18 @@
   color: theme('colors.cyan.900');
 }
 
-#line-chart {
+#bar-chart {
   stroke: theme('colors.cyan.800');
 }
 
-#line-chart * {
+#bar-chart * {
   stroke: theme('colors.cyan.800');
+}
+
+#results-table {
+  width: 60vw;
+  max-width: 500px;
+  margin-left: calc((100vw - min(500vw, 500px)) / 2);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -117,11 +123,11 @@
     color: theme('colors.cyan.100');
   }
 
-  #line-chart {
+  #bar-chart {
     stroke: theme('colors.cyan.200');
   }
 
-  #line-chart * {
+  #bar-chart * {
     stroke: theme('colors.cyan.200');
   }
 }

@@ -7,9 +7,10 @@ import { useWindowSize } from '../use-window-size';
 import { Button } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { fileNames } from './pcb-filenames';
-const PCBWithNoSSR = dynamic(() => import('./pcb-component'), { ssr: false });
 import { BarChart } from '@mui/x-charts';
 import { axisClasses } from '@mui/x-charts/ChartsAxis';
+import ResultsTable from './results-table';
+const PCBWithNoSSR = dynamic(() => import('./pcb-component'), { ssr: false });
 
 interface PoissonData {
   x_data: number[],
@@ -24,11 +25,16 @@ export default function Home() {
   };
   const [hideGameOpacity, setHideGameOpacity] = useState(1);
   const [hideGameZIndex, setHideGameZIndex] = useState(1);
+  const [hideResultsOpacity, setHideResultsOpacity] = useState(0);
+  const [showResults, setShowResults] = useState(false);
   const [timerText, setTimerText] = useState('2:00');
   const [timerRemaining, setTimeRemaining] = useState(timerMinutes * 60 * 1000);
   const [gameStartTime, setGameStartTime] = useState(0);
   const [gameTracker, setGameTracker] = useState(new Map());
+  const [numCorrect, setNumCorrect] = useState(0);
+  const [numIncorrect, setNumIncorrect] = useState(0);
   const [poissonData, setPoissonData] = useState(poissonInitialData);
+  const [finalTime, setFinalTime] = useState(60);
   const logo_width = Math.min(useWindowSize().width * 0.2, 200);
   const logo_height = Math.min(useWindowSize().width * 0.2, 200);
   const pcb_ref_width = Math.min(useWindowSize().width * 0.7, 700);
@@ -40,9 +46,14 @@ export default function Home() {
         setTimerText(getTimerText(timerRemaining));
       } else {
         clearInterval(intervalId)
-        setTimerText('0:00');
-        getTestResults();
-        setPoissonData(getData(5));
+        if (timerRemaining == 0) {
+          setTimerText('0:00');
+        }
+        setShowResults(true);
+        const lambda = numCorrect / (finalTime / 60);
+        setPoissonData(getData(lambda));
+        setHideResultsOpacity(1);
+        setHideGameZIndex(1);
       }
     }, 1000);
     return () => clearInterval(intervalId);
@@ -59,6 +70,7 @@ export default function Home() {
   }
 
   function onBeginButtonClick() {
+    setTimeRemaining(timerMinutes * 60 * 1000);
     setHideGameOpacity(0);
     setHideGameZIndex(0);
     setGameStartTime(Date.now());
@@ -70,13 +82,13 @@ export default function Home() {
     if (!isVisible) {
       gameTracker_temp.delete(index);
     } else {
-      gameTracker_temp.set(index, timeStamp);
+      gameTracker_temp.set(index, timeStamp.toFixed(2));
     }
     setGameTracker(gameTracker_temp);
-    console.log(gameTracker);
+    setCorrectCounters();
   };
 
-  function getTestResults() {
+  function setCorrectCounters() {
     let countCorrect = 0;
     let countIncorrect = 0;
     for (const key of gameTracker.keys()) {
@@ -87,6 +99,13 @@ export default function Home() {
         countIncorrect++;
       }
     }
+    if (countCorrect == 5) {
+      const finalTime = (Date.now() - gameStartTime) / 1000;
+      setFinalTime(Number(finalTime.toFixed(2)));
+      setTimeRemaining(-1000);
+    }
+    setNumCorrect(countCorrect);
+    setNumIncorrect(countIncorrect);
   }
 
   function factorial(n: number) {
@@ -98,8 +117,7 @@ export default function Home() {
   }
 
   function calculatePMF(lambda: number, x: number) {
-    let p = (Math.pow(lambda, x) * Math.exp(-1 * lambda))/factorial(x);
-    console.log(p);
+    const p = (Math.pow(lambda, x) * Math.exp(-1 * lambda))/factorial(x);
     return p;
   }
 
@@ -119,7 +137,7 @@ export default function Home() {
     }
   }
 
-  function BasicLineChart() {
+  function BasicBarChart() {
     const chartSetting = {
       sx: {
         [`.${axisClasses.left} .${axisClasses.label}`]: {
@@ -167,29 +185,28 @@ export default function Home() {
           goal to hire quality inspectors that can meet our expected 3500 unit/day rate.
         </p>
         <p className='paragraph font-normal text-cyan-950 dark:text-cyan-50 mt-5'>
-          Your task is to find the non-conforming parts to a circuit board. You will be shown a picture of a board that
-          is correctly installed. The 3D model below that should match the photo, but it does not. Your task is to select
-          the parts on the model that are incorrect.
+          Your task is to find the non-conforming parts on a circuit board. You will be shown a picture of a board that
+          is correctly installed. The 3D model below should match the photo, but it does not. You will have ${timerMinutes} minute to select
+          the defective parts on the model.
         </p>
       </div>
       <div className='mt-10'>
-        {/* TODO: get start of game text on front of image */}
-        <div className='test-cover' style={{ position: 'absolute', opacity: hideGameOpacity, width: '100vw', height: '100vh', zIndex: hideGameZIndex, transition: 'opacity 0.5s ease-in' }}>
+        <div className='test-cover'
+        style={{ position: 'absolute', opacity: hideGameOpacity, width: '100vw', height: '100vh', zIndex: hideGameZIndex, transition: 'opacity 0.5s ease-in' }}>
           <div style={{ position: 'absolute', width: '100vw', height: '50px', top: '200px' }} className='flex justify-center'>
             <Button variant="outlined" className='begin-button'
               onClick={() => onBeginButtonClick()}
             >Begin Test</Button>
           </div>
         </div>
-        {/* <div style={{ position: 'absolute', opacity: hide_game, width: '100vw', height: '100vh', zIndex:'1', backgroundColor: 'purple' }} /> */}
         <div id='pcb_ref' className='grid justify-center mt-1'>
           <Image src='/pcb_ref.jpg' width={pcb_ref_width} height={pcb_ref_height} alt='Picture of PCB' />
-          <div className='text-sm game-text flex justify-center'>Correct Installation Reference</div>
+          <div className='text-sm game-text flex justify-center mt-1'>Correct Installation Reference</div>
         </div>
-        <div style={{ marginTop: '-70px;' }}>
+        <div style={{ marginTop: '-70px', opacity: 1 - hideGameOpacity, transition: 'opacity 0.5s ease-in' }}>
           <PCBWithNoSSR onPartClick={handlePartClick} />
         </div>
-        <div className='game-text grid justify-center' style={{ opacity: 1 - hideGameOpacity, marginTop: '-70px' }}>
+        <div className='game-text grid justify-center' style={{ opacity: 1 - hideGameOpacity, marginTop: '-6vh', transition: 'opacity 0.5s ease-in' }}>
           <p className='text-sm'>
             Incorrect Installation - select all defective parts
           </p>
@@ -197,8 +214,24 @@ export default function Home() {
             TIME REMAINING:<span className='ml-2'> {timerText} </span>
           </p>
         </div>
-        <div id='line-chart' className='flex justify-center'>
-          <BasicLineChart />
+        <div id='results' style={{ opacity: hideResultsOpacity, transition: 'opacity 0.5s ease-in' }}>
+          <div className='text-container'>
+            <p className='paragraph font-normal text-cyan-950 dark:text-cyan-100 mt-5'>
+              Results
+            </p>
+            <p className='paragraph font-normal text-cyan-950 dark:text-cyan-100 mt-5'>
+              You found {numCorrect} of 5 defects in {finalTime} seconds. You selected {numIncorrect} incorrect parts during your test.
+              The table below contains the timestamps at which the defects were found. The rate at which
+              you found defects can be found by dividing the number of defects by the total time it took
+              to find them. This is calculated below.
+            </p>
+          </div>
+          <div id="results-table" className='mt-5'>
+            {showResults && numCorrect > 0 && <ResultsTable data={gameTracker} />}
+          </div>
+          <div id='bar-chart' className='flex justify-center'>
+            {showResults && <BasicBarChart />}
+          </div>
         </div>
       </div>
     </div>
