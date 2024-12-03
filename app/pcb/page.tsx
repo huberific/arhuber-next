@@ -270,10 +270,10 @@ export default function Home() {
           Here at Initech, quality at speed is our top priority. We manufacture over a million circuit boards annually
           and our loyal customers demand perfection. To aid in assessing our future quality inspector&apos;s performance,
           we&apos;ve developed this quality assurance test to test your speed in finding defective parts. It is our
-          goal to hire quality inspectors that can meet an expected rate of {goal} defects/min.
+          goal to hire quality inspectors that can meet or exceed an expected rate of {goal} defects/min.
         </p>
         <p className='paragraph font-normal text-cyan-950 dark:text-cyan-50 mt-5'>
-          Your task is to find the five non-conforming parts on a circuit board. You will be shown a picture of a board that
+          Your task is to find the five non-conforming parts on a circuit board as quickly as possible. You will be shown a picture of a board that
           is correctly installed. The 3D model below should match the photo, but it does not. Once the test has begun,
           you will have {timerMinutes} minute to select the defective parts on the model. Are you ready?
         </p>
