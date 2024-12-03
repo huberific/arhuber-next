@@ -40,8 +40,7 @@ export default function Home() {
   const [finalTime, setFinalTime] = useState(60);
   const [lambda, setLambda] = useState('');
   const [probabilityOutcome, setProbabilityOutcome] = useState('0');
-  const [acceptableOutcome, setAcceptableOutcome] = useState(false);
-  const [gameStarted, setGameStarted] = useState(0);
+  const [accuracy, setAccuracy] = useState('0');
   const logo_width = Math.min(useWindowSize().width * 0.2, 200);
   const logo_height = Math.min(useWindowSize().width * 0.2, 200);
   const pcb_ref_width = Math.min(useWindowSize().width * 0.7, 700);
@@ -128,26 +127,44 @@ export default function Home() {
       p += y_data[i];
     }
     const prob_gte_goal = (1 - p) * 100;
-    console.log(prob_gte_goal);
-    if (prob_gte_goal > 75) {
-      setAcceptableOutcome(true);
-    } else {
-      setAcceptableOutcome(false);
-    }
     setProbabilityOutcome(prob_gte_goal.toFixed(1));
   }
 
   function AcceptanceStatement() {
-    return acceptableOutcome ? (
+    const lowAccuracy = (
       <p className='paragraph font-normal text-cyan-950 dark:text-cyan-100 mt-5'>
-        Congratulations! We are impressed with your results! We wish to make you an offer given your strong performance!
+        Although you performed well with a probability of {probabilityOutcome}% in finding defects at our goal rate, you made some mistakes.
+        Your accuracy of {accuracy}% did not meet meet our goal of 75%. Thank you for taking the time to test with us!
       </p>
-    ) : (
+    );
+    const lowProbability = (
       <p className='paragraph font-normal text-cyan-950 dark:text-cyan-100 mt-5'>
-        Unfortunately, we are looking to find a candidate with a higher likelihood (75%) of detecting {goal} defects/min.
+        Although you performed well with a high accuracy of {accuracy}% at finding defects, the likelihood of {probabilityOutcome}%
+        in performing finding defects did not meet meet our goal of 75%. Thank you for taking the time to test with us!
+      </p>
+    );
+    const lowAccuracyAndProbability = (
+      <p className='paragraph font-normal text-cyan-950 dark:text-cyan-100 mt-5'>
+        Unfortunately, your accuracy of {accuracy}% and probability of {probabilityOutcome}% did not meet our goal of 75%.
         Thank you for taking the time to test with us!
       </p>
-    )
+    );
+    const success = (
+      <p className='paragraph font-normal text-cyan-950 dark:text-cyan-100 mt-5'>
+        Congratulations! Your accuracy of {accuracy}% and probability of {probabilityOutcome}% meet our goal of 75%.
+        We are impressed with your results! We wish to make you an offer given your strong performance!
+      </p>
+    );
+    if (Number(accuracy) < 74.5 && Number(probabilityOutcome) < 74.5) {
+      return lowAccuracyAndProbability;
+    }
+    if (Number(accuracy) < 74.5) {
+      return lowAccuracy;
+    }
+    if (Number(probabilityOutcome) < 74.5) {
+      return lowProbability;
+    }
+    return success;
   }
 
   function onBeginButtonClick() {
@@ -180,6 +197,7 @@ export default function Home() {
   function setCorrectCounters() {
     let countCorrect = 0;
     let countIncorrect = 0;
+    let totalCount = 0;
     for (const key of gameTracker.keys()) {
       const idx = Number(key);
       if (fileNames[idx].includes('defect')) {
@@ -187,6 +205,7 @@ export default function Home() {
       } else {
         countIncorrect++;
       }
+      totalCount++;
     }
     if (countCorrect == 5) {
       const finalTime = (Date.now() - gameStartTime) / 1000;
@@ -195,6 +214,8 @@ export default function Home() {
     }
     setNumCorrect(countCorrect);
     setNumIncorrect(countIncorrect);
+    const this_accuracy = (countCorrect / totalCount) * 100;
+    setAccuracy(this_accuracy.toFixed(1));
   }
 
   function factorial(n: number) {
@@ -269,7 +290,7 @@ export default function Home() {
         <p className='paragraph font-normal text-cyan-950 dark:text-cyan-50 mt-5'>
           Here at Initech, quality at speed is our top priority. We manufacture over a million circuit boards annually
           and our loyal customers demand perfection. To aid in assessing our future quality inspector&apos;s performance,
-          we&apos;ve developed this quality assurance test to test your speed in finding defective parts. It is our
+          we&apos;ve developed this quality assurance test to determine your speed and accuracy in finding defective parts. It is our
           goal to hire quality inspectors that can meet or exceed an expected rate of {goal} defects/min.
         </p>
         <p className='paragraph font-normal text-cyan-950 dark:text-cyan-50 mt-5'>
@@ -308,8 +329,9 @@ export default function Home() {
               Results
             </p>
             <p className='paragraph font-normal text-cyan-950 dark:text-cyan-100 mt-5'>
-              You found {numCorrect} of 5 defects in {finalTime} seconds. You selected {numIncorrect} incorrect parts during your test.
-              The table below contains the timestamps at which the defects were found.
+              You found {numCorrect} of 5 defects in {finalTime} seconds and selected {numIncorrect} incorrect parts during your test.
+              This resulted in an accuracy score of {accuracy}%. The table below contains the timestamps at which the correct
+              defects were found.
             </p>
           </div>
           <div id="results-table" className='mt-5'>
@@ -335,7 +357,7 @@ export default function Home() {
               {showResults && <BasicBarChart />}
             </div>
             <p className='paragraph font-normal text-cyan-950 dark:text-cyan-100 mt-8'>
-              The goal of the company is to hire someone who can find {goal} defects or more within a minute. Given
+              The goal of the company is to hire someone who can reliably find {goal} defects or more within a minute. Given
               your test results, there is a probability of {probabilityOutcome}% that you can achieve this
               standard on a consistent basis. This result was calculated with the following formula:
             </p>
