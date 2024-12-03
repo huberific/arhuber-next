@@ -50,7 +50,10 @@ export default function Home() {
   useEffect(() => {
     const intervalId = setInterval(() => {
       if (gameStartTime > 0) {
-        const elapsedSeconds = Math.floor((Date.now() - gameStartTime) / 1000);
+        let elapsedSeconds = Math.floor((Date.now() - gameStartTime) / 1000);
+        if (numCorrect == 5) {
+          elapsedSeconds = 61;
+        }
         if (elapsedSeconds < 1) {
           setTimerText('1:00');
         } else if (60 - elapsedSeconds >= 0) {
@@ -61,7 +64,9 @@ export default function Home() {
           setTimerText(`0:${sec}`);
         } else {
           clearInterval(intervalId)
-          setTimerText('0:00');
+          if (60 - elapsedSeconds < 1) {
+            setTimerText('0:00');
+          }
           setShowResults(true);
           const l = numCorrect / (finalTime / 60);
           setLambda(l.toFixed(1));
