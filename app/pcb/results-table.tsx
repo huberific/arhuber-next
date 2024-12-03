@@ -32,8 +32,8 @@ export default function ResultsTable({data}: ResultsTableProps) {
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell>Defect</TableCell>
-            <TableCell>Time&nbsp;(seconds)</TableCell>
+            <TableCell width={'30%'}>Defect</TableCell>
+            <TableCell>Time&nbsp;(sec)</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

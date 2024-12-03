@@ -104,7 +104,16 @@
 #results-table {
   width: 60vw;
   max-width: 500px;
-  margin-left: calc((100vw - min(500vw, 500px)) / 2);
+  margin-left: calc((100vw - min(60vw, 500px)) / 2);
+  stroke: theme('colors.cyan.900');
+  background-color: theme('colors.slate.100');
+  overflow-x: hidden;
+}
+
+#results-table * {
+  color: theme('colors.cyan.900');
+  background-color: theme('colors.slate.100');
+  overflow-x: hidden;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -129,5 +138,15 @@
 
   #bar-chart * {
     stroke: theme('colors.cyan.200');
+  }
+
+  #results-table {
+    color: theme('colors.cyan.200');
+    background-color: theme('colors.slate.800');
+  }
+
+  #results-table * {
+    color: theme('colors.cyan.200');
+    background-color: theme('colors.slate.800');
   }
 }
