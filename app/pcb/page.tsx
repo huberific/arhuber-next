@@ -150,16 +150,6 @@ export default function Home() {
     )
   }
 
-  // function getTimerText(time_ms: number) {
-  //   setTimeRemaining(timerRemaining - 1000);
-  //   let minutes = String(Math.floor(time_ms / (60 * 1000)));
-  //   let seconds = String((time_ms / 1000) % 60);
-  //   if (seconds.length < 2) {
-  //     seconds = '0' + seconds;
-  //   }
-  //   return `${minutes}:${seconds}`
-  // }
-
   function onBeginButtonClick() {
     setGameStartTime(Date.now());
     setHideGameOpacity(0);
@@ -283,7 +273,7 @@ export default function Home() {
           goal to hire quality inspectors that can meet an expected rate of {goal} defects/min.
         </p>
         <p className='paragraph font-normal text-cyan-950 dark:text-cyan-50 mt-5'>
-          Your task is to find the non-conforming parts on a circuit board. You will be shown a picture of a board that
+          Your task is to find the five non-conforming parts on a circuit board. You will be shown a picture of a board that
           is correctly installed. The 3D model below should match the photo, but it does not. Once the test has begun,
           you will have {timerMinutes} minute to select the defective parts on the model. Are you ready?
         </p>
